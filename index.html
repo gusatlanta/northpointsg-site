@@ -803,29 +803,36 @@
     msg.className = ''; msg.textContent = '';
 
     const body = {
-      first_name: first,
-      last_name:  last,
-      company:    co,
-      email:      em,
-      phone:      document.getElementById('phone').value.trim(),
-      type:       document.getElementById('division').value,
-      message:    document.getElementById('message').value.trim(),
-      source:     'northpointsg.com'
+      name:         first + ' ' + last,
+      employer_name: first + ' ' + last,
+      company:      co,
+      employer_company: co,
+      email:        em,
+      employer_email: em,
+      phone:        document.getElementById('phone').value.trim(),
+      inquiry_type: document.getElementById('division').value || 'general',
+      notes:        document.getElementById('message').value.trim(),
+      message:      document.getElementById('message').value.trim(),
+      source:       'northpointsg.com'
     };
 
     try {
       const res  = await fetch('https://100xrecruiting.com/api/public/inquiry', {
         method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body)
       });
-      const data = await res.json();
-      if (data.ok) {
+      let data;
+      try { data = await res.json(); } catch(_) { data = {}; }
+      if (res.ok && data.ok) {
         msg.className = 'ok'; msg.textContent = '✓ Request sent! We\'ll be in touch within 24 hours.';
         e.target.reset();
       } else {
-        throw new Error(data.error || 'Server error');
+        msg.className = 'err';
+        msg.textContent = data.error
+          ? 'Error: ' + data.error + ' — or call us at 678.777.5627.'
+          : 'Something went wrong (HTTP ' + res.status + '). Please call us at 678.777.5627.';
       }
     } catch(err) {
-      msg.className = 'err'; msg.textContent = 'Something went wrong. Please call us at 678.777.5627.';
+      msg.className = 'err'; msg.textContent = 'Network error: ' + err.message + ' — Please call us at 678.777.5627.';
     } finally {
       btn.disabled = false; btn.textContent = 'Send My Request →';
     }
