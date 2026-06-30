@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NorthPoint Search Group | Executive Recruiting & Staffing | Atlanta, GA</title>
+  <meta name="description" content="NorthPoint Search Group is Atlanta's full-service executive recruiting firm. We place top talent in Accounting & Finance, Legal, Construction, Marketing, HR, and Healthcare Finance since 2005.">
+  <link rel="canonical" href="https://www.northpointsg.com/">
+  <meta property="og:title" content="NorthPoint Search Group | Executive Recruiting Atlanta">
+  <meta property="og:description" content="Atlanta's full-service recruiting firm placing top talent since 2005. Accounting & Finance, Legal, Construction, Marketing, Healthcare Finance.">
+  <meta property="og:url" content="https://www.northpointsg.com/">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/jpeg" href="logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --teal:      #1FA6BD;
+      --teal-dark: #178fa4;
+      --teal-lt:   #e8f8fb;
+      --blue:      #2766A8;
+      --blue-dark: #1e5290;
+      --blue-lt:   #eaf1f9;
+      --navy:      #0f2240;
+      --text:      #1a2535;
+      --muted:     #5a6a80;
+      --border:    #e2e8f0;
+      --white:     #ffffff;
+      --off:       #f8fafc;
+      --nav-h:     80px;
+      --grad:      linear-gradient(135deg, var(--teal), var(--blue));
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── TOPBAR ── */
+    .topbar { background: var(--navy); padding: 7px 0; font-size: .75rem; color: rgba(255,255,255,.65); }
+    .topbar-inner { max-width: 1160px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: flex-end; align-items: center; gap: 24px; }
+    .topbar a { color: rgba(255,255,255,.75); transition: color .2s; }
+    .topbar a:hover { color: white; }
+
+    /* ── NAV ── */
+    nav { position: sticky; top: 0; z-index: 900; background: rgba(255,255,255,.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); transition: box-shadow .3s; }
+    nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,.08); }
+    .nav-inner { max-width: 1160px; margin: 0 auto; padding: 0 24px; height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+    .logo { display: flex; align-items: center; flex-shrink: 0; }
+    .logo img { height: 56px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; flex: 1; justify-content: center; }
+    .nav-links a { font-size: .88rem; font-weight: 500; color: var(--muted); transition: color .2s; }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-ctas { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-size: .875rem; font-weight: 600; font-family: inherit; cursor: pointer; transition: all .2s; border: 2px solid transparent; white-space: nowrap; }
+    .btn-outline { background: transparent; color: var(--teal); border-color: var(--teal); }
+    .btn-outline:hover { background: var(--teal); color: white; }
+    .btn-primary { background: var(--grad); color: white; border: none; box-shadow: 0 4px 16px rgba(31,166,189,.3); }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(31,166,189,.4); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: all .3s; display: block; }
+
+    /* ── MOBILE MENU ── */
+    .mob-nav { display: none; position: fixed; inset: 0; top: var(--nav-h); background: white; z-index: 899; flex-direction: column; padding: 24px; gap: 0; overflow-y: auto; }
+    .mob-nav.open { display: flex; }
+    .mob-nav a { display: block; padding: 15px 0; font-size: 1rem; font-weight: 600; color: var(--text); border-bottom: 1px solid var(--border); }
+    .mob-nav .mob-cta { margin-top: 20px; text-align: center; padding: 14px; background: var(--grad); color: white; border-radius: 10px; border: none; }
+
+    /* ── HERO ── */
+    .hero { padding: calc(var(--nav-h) + 72px) 24px 96px; background: linear-gradient(160deg, #f0fafe 0%, #eaf1f9 55%, #fff 100%); position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -100px; right: -60px; width: 580px; height: 580px; border-radius: 50%; background: radial-gradient(circle, rgba(31,166,189,.12) 0%, transparent 70%); pointer-events: none; }
+    .hero-inner { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--teal-lt); border: 1px solid rgba(31,166,189,.3); color: var(--teal-dark); padding: 6px 14px; border-radius: 100px; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 24px; }
+    .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--teal); border-radius: 50%; }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(36px, 4.5vw, 56px); font-weight: 800; line-height: 1.1; letter-spacing: -.5px; margin-bottom: 20px; }
+    h1 em { font-style: normal; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-sub { font-size: 1.05rem; color: var(--muted); line-height: 1.75; margin-bottom: 36px; max-width: 460px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-hero { padding: 15px 30px; font-size: .95rem; border-radius: 10px; }
+    .hero-visual { display: flex; flex-direction: column; gap: 16px; }
+    .stat-card { background: white; border-radius: 16px; padding: 24px 28px; box-shadow: 0 4px 28px rgba(0,0,0,.07); border: 1px solid var(--border); }
+    .stat-card-row { display: flex; gap: 16px; }
+    .stat-card-row .stat-card { flex: 1; }
+    .stat-card-label { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 6px; }
+    .stat-card-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 800; color: var(--text); line-height: 1; }
+    .stat-card-num sup { font-size: 1rem; }
+    .stat-card-sub { font-size: .78rem; color: var(--muted); margin-top: 4px; }
+
+    /* ── TRUST BAR ── */
+    .trust-bar { background: var(--navy); padding: 22px 24px; }
+    .trust-inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
+    .trust-label { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: rgba(255,255,255,.45); }
+    .trust-divider { width: 1px; height: 20px; background: rgba(255,255,255,.15); }
+    .trust-items { display: flex; align-items: center; gap: 36px; flex-wrap: wrap; }
+    .trust-item { font-size: .8rem; font-weight: 600; color: rgba(255,255,255,.55); letter-spacing: .04em; }
+
+    /* ── SECTIONS ── */
+    .section { padding: 96px 24px; }
+    .section-inner { max-width: 1160px; margin: 0 auto; }
+    .section-tag { font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; color: var(--teal); margin-bottom: 12px; }
+    h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3.5vw, 42px); font-weight: 800; line-height: 1.15; letter-spacing: -.3px; margin-bottom: 16px; }
+    .section-sub { font-size: 1rem; color: var(--muted); max-width: 540px; line-height: 1.75; margin-bottom: 52px; }
+
+    /* ── SERVICES ── */
+    .services { background: var(--white); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .svc-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 30px; transition: box-shadow .3s, transform .3s, border-color .3s; }
+    .svc-card:hover { box-shadow: 0 12px 40px rgba(31,166,189,.12); transform: translateY(-4px); border-color: rgba(31,166,189,.3); }
+    .svc-icon { width: 50px; height: 50px; border-radius: 12px; background: linear-gradient(135deg, var(--teal-lt), var(--blue-lt)); display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 18px; }
+    .svc-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 10px; }
+    .svc-card p { font-size: .875rem; color: var(--muted); line-height: 1.7; }
+    .svc-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-size: .82rem; font-weight: 700; color: var(--teal); transition: gap .2s; }
+    .svc-link:hover { gap: 10px; }
+
+    /* ── STATS BAND ── */
+    .stats-band { background: var(--grad); padding: 72px 24px; }
+    .stats-grid { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center; }
+    .stat-item .num { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 800; color: white; line-height: 1; }
+    .stat-item .num sup { font-size: 1.4rem; }
+    .stat-item .lbl { font-size: .85rem; color: rgba(255,255,255,.75); margin-top: 8px; font-weight: 500; }
+
+    /* ── ABOUT ── */
+    .about { background: var(--off); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-img { width: 100%; aspect-ratio: 4/3; border-radius: 20px; background: linear-gradient(135deg, var(--teal-lt), var(--blue-lt)); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    .about-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; }
+    .about-badge { position: absolute; bottom: -18px; right: -18px; background: white; border-radius: 14px; padding: 18px 22px; box-shadow: 0 8px 32px rgba(0,0,0,.12); border: 1px solid var(--border); text-align: center; }
+    .about-badge .badge-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 800; color: var(--teal); line-height: 1; }
+    .about-badge .badge-text { font-size: .72rem; color: var(--muted); margin-top: 4px; line-height: 1.4; }
+    .about-content p { font-size: .95rem; color: var(--muted); line-height: 1.8; margin-bottom: 14px; }
+    .about-pills { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
+    .pill { background: white; border: 1px solid var(--border); border-radius: 100px; padding: 7px 16px; font-size: .82rem; font-weight: 500; color: var(--text); }
+
+    /* ── PROCESS ── */
+    .process { background: var(--white); }
+    .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; position: relative; }
+    .process-steps::before { content: ''; position: absolute; top: 27px; left: calc(12.5% + 16px); right: calc(12.5% + 16px); height: 2px; background: var(--grad); }
+    .step { text-align: center; }
+    .step-num { width: 54px; height: 54px; border-radius: 50%; margin: 0 auto 20px; background: var(--grad); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 800; color: white; position: relative; z-index: 1; box-shadow: 0 4px 16px rgba(31,166,189,.35); }
+    .step h3 { font-size: .95rem; font-weight: 700; margin-bottom: 8px; }
+    .step p { font-size: .82rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── DIVISIONS ── */
+    .divisions { background: var(--off); }
+    .div-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .div-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
+    .div-card h3 { font-size: .95rem; font-weight: 700; color: var(--text); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+    .div-card h3 span { font-size: 1.3rem; }
+    .div-card ul { list-style: none; }
+    .div-card ul li { font-size: .83rem; color: var(--muted); padding: 5px 0; border-bottom: 1px solid var(--border); line-height: 1.4; }
+    .div-card ul li:last-child { border-bottom: none; }
+    .div-card ul li::before { content: '·'; color: var(--teal); font-weight: 700; margin-right: 8px; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--white); }
+    .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .test-card { background: var(--off); border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
+    .quote { font-size: 3rem; line-height: 1; color: var(--teal); opacity: .3; font-family: Georgia, serif; }
+    .test-card p { font-size: .875rem; color: var(--text); line-height: 1.75; font-style: italic; margin: 8px 0 20px; }
+    .test-author { display: flex; align-items: center; gap: 12px; }
+    .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--grad); display: flex; align-items: center; justify-content: center; font-size: .8rem; font-weight: 700; color: white; flex-shrink: 0; }
+    .author-name { font-size: .82rem; font-weight: 700; }
+    .author-title { font-size: .75rem; color: var(--muted); }
+
+    /* ── CONTACT ── */
+    .contact { background: linear-gradient(160deg, #f0fafe 0%, #eaf1f9 100%); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .contact-info p { font-size: .95rem; color: var(--muted); line-height: 1.75; margin-bottom: 32px; }
+    .contact-detail { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px; }
+    .c-icon { width: 42px; height: 42px; border-radius: 10px; background: white; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; box-shadow: 0 2px 8px rgba(0,0,0,.06); flex-shrink: 0; }
+    .c-detail a { font-weight: 600; color: var(--text); }
+    .c-detail a:hover { color: var(--teal); }
+    .c-detail small { font-size: .75rem; color: var(--muted); display: block; margin-top: 2px; }
+    .contact-form { background: white; border-radius: 20px; padding: 40px; box-shadow: 0 8px 40px rgba(0,0,0,.08); border: 1px solid var(--border); }
+    .contact-form h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 4px; }
+    .form-sub { font-size: .85rem; color: var(--muted); margin-bottom: 26px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { margin-bottom: 14px; }
+    .form-group label { display: block; font-size: .8rem; font-weight: 600; color: var(--text); margin-bottom: 5px; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 11px 14px; border: 1.5px solid var(--border); border-radius: 10px; font-size: .875rem; font-family: inherit; color: var(--text); background: var(--off); transition: border-color .2s, box-shadow .2s; outline: none; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(31,166,189,.12); background: white; }
+    .form-group textarea { min-height: 100px; resize: vertical; }
+    .form-submit { width: 100%; padding: 15px; border: none; border-radius: 10px; background: var(--grad); color: white; font-size: .95rem; font-weight: 700; font-family: inherit; cursor: pointer; transition: opacity .2s, transform .15s; box-shadow: 0 4px 16px rgba(31,166,189,.3); }
+    .form-submit:hover { opacity: .9; transform: translateY(-1px); }
+    .form-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+    #form-msg { margin-top: 12px; font-size: .85rem; font-weight: 600; display: none; padding: 10px 14px; border-radius: 8px; }
+    #form-msg.ok { background: #ecfdf5; color: #065f46; display: block; }
+    #form-msg.err { background: #fef2f2; color: #991b1b; display: block; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--navy); color: rgba(255,255,255,.6); padding: 56px 24px 32px; }
+    .footer-inner { max-width: 1160px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-brand p { font-size: .875rem; line-height: 1.7; max-width: 280px; margin-top: 16px; }
+    .footer-logo { font-family: 'Playfair Display', serif; }
+    .footer-logo .fl-top { font-size: 1.3rem; font-weight: 800; color: white; display: block; }
+    .footer-logo .fl-sub { font-size: .65rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--teal); display: block; margin-top: 3px; }
+    .footer-col h4 { font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; color: white; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col li a { font-size: .85rem; color: rgba(255,255,255,.5); transition: color .2s; }
+    .footer-col li a:hover { color: var(--teal); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: .8rem; }
+    .footer-socials { display: flex; gap: 10px; }
+    .social-btn { width: 34px; height: 34px; border-radius: 8px; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.65); font-size: .85rem; font-weight: 700; transition: background .2s, color .2s; }
+    .social-btn:hover { background: var(--teal); color: white; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav-links, .nav-ctas { display: none; }
+      .hamburger { display: flex; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .div-grid { grid-template-columns: 1fr 1fr; }
+      .test-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .process-steps { grid-template-columns: repeat(2, 1fr); }
+      .process-steps::before { display: none; }
+    }
+    @media (max-width: 600px) {
+      .services-grid, .div-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .trust-inner { flex-direction: column; gap: 16px; }
+      .hero-actions { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <span>Delivering Top Talent Since 2005</span>
+    <a href="tel:6787775627">678.777.5627</a>
+    <a href="mailto:info@northpointsg.com">info@northpointsg.com</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <img src="logo-nav.jpg" alt="NorthPoint Search Group" onerror="this.style.display='none'">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#divisions">Specialties</a></li>
+      <li><a href="#process">How We Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-ctas">
+      <a href="tel:6787775627" class="btn btn-outline">678.777.5627</a>
+      <a href="#contact" class="btn btn-primary">Start a Search</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-nav" id="mobNav">
+  <a href="#services">Services</a>
+  <a href="#about">About</a>
+  <a href="#divisions">Specialties</a>
+  <a href="#process">How We Work</a>
+  <a href="#contact">Contact</a>
+  <a href="#contact" class="mob-cta">Start a Search →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">Atlanta's Full-Service Recruiting Firm Since 2005</div>
+      <h1>Helping You Win<br>the <em>War on Talent</em></h1>
+      <p class="hero-sub">NorthPoint Search Group connects great companies with top-tier professionals across Accounting &amp; Finance, Legal, Construction, Marketing, Healthcare, and HR — faster, smarter, and with lasting results.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary btn-hero">Start a Search →</a>
+        <a href="#services" class="btn btn-outline btn-hero">How We Work</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="stat-card">
+        <div class="stat-card-label">Average Time-to-Fill</div>
+        <div class="stat-card-num">18 <small style="font-size:1rem;font-family:Inter">days</small></div>
+        <div class="stat-card-sub">vs. 45-day industry average</div>
+      </div>
+      <div class="stat-card-row">
+        <div class="stat-card">
+          <div class="stat-card-label">Placements</div>
+          <div class="stat-card-num">500<sup>+</sup></div>
+          <div class="stat-card-sub">Successful hires made</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-label">Retention</div>
+          <div class="stat-card-num">94<small style="font-size:1rem;font-family:Inter">%</small></div>
+          <div class="stat-card-sub">2-year rate</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-label">Active Candidate Network</div>
+        <div class="stat-card-num">12,000<sup>+</sup></div>
+        <div class="stat-card-sub">Vetted professionals across the Southeast</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-label">Trusted across</div>
+    <div class="trust-divider"></div>
+    <div class="trust-items">
+      <span class="trust-item">Financial Services</span>
+      <span class="trust-item">Construction</span>
+      <span class="trust-item">Manufacturing</span>
+      <span class="trust-item">Healthcare</span>
+      <span class="trust-item">Legal</span>
+      <span class="trust-item">Real Estate</span>
+      <span class="trust-item">Distribution</span>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section services" id="services">
+  <div class="section-inner">
+    <div class="section-tag">What We Do</div>
+    <h2>Recruiting Solutions Built<br>Around Your Goals</h2>
+    <p class="section-sub">Whether you need a single critical hire or a full team build-out, we tailor our approach to your timeline, culture, and growth plan.</p>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🔍</div>
+        <h3>Executive Search</h3>
+        <p>Retained and contingency searches for Director through C-suite roles. We surface passive candidates your internal team can't reach through deep market relationships.</p>
+        <a href="#contact" class="svc-link">Start a search →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">⚡</div>
+        <h3>Direct Hire Placement</h3>
+        <p>Permanent placements for mid-level roles across all our practice areas — delivered faster than the industry standard with a satisfaction guarantee.</p>
+        <a href="#contact" class="svc-link">Find talent →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🤝</div>
+        <h3>Contract &amp; Interim Staffing</h3>
+        <p>Flexible engagements when you need expert coverage without a long-term commitment — project-based, interim leadership, or backfill.</p>
+        <a href="#contact" class="svc-link">Get coverage →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📋</div>
+        <h3>Talent Assessments</h3>
+        <p>Structured interviews, skills testing, and behavioral assessments built into every search so you only meet candidates who are truly ready to perform.</p>
+        <a href="#contact" class="svc-link">Learn more →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🏢</div>
+        <h3>Team Build-Out</h3>
+        <p>Scaling a department? We manage multi-hire engagements from org design through onboarding — acting as an embedded recruiting partner.</p>
+        <a href="#contact" class="svc-link">Plan a build-out →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📊</div>
+        <h3>Market Intelligence</h3>
+        <p>Compensation benchmarking, talent-pool mapping, and competitive landscape insights — so you enter every search with a realistic picture of the market.</p>
+        <a href="#contact" class="svc-link">Get a report →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<div class="stats-band">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="num" data-target="500" data-suffix="+">500+</div>
+      <div class="lbl">Placements Completed</div>
+    </div>
+    <div class="stat-item">
+      <div class="num">94%</div>
+      <div class="lbl">2-Year Retention Rate</div>
+    </div>
+    <div class="stat-item">
+      <div class="num">18</div>
+      <div class="lbl">Avg. Days to Fill</div>
+    </div>
+    <div class="stat-item">
+      <div class="num" data-target="20" data-suffix="+">20+</div>
+      <div class="lbl">Years Serving the Southeast</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-img" style="position:relative;">
+        <img src="logo.jpg" alt="NorthPoint Search Group" style="width:60%;margin:auto;opacity:.8;">
+        <div class="about-badge">
+          <div class="badge-num">20+</div>
+          <div class="badge-text">Years Serving<br>the Southeast</div>
+        </div>
+      </div>
+      <div class="about-content">
+        <div class="section-tag">About NorthPoint</div>
+        <h2>Recruiting Built on<br>Relationships, Not Résumés</h2>
+        <p>NorthPoint Search Group is a highly reputable full-service recruiting firm dedicated to sourcing and placing top-tier professionals across multiple industries. Since 2005, our award-winning process and dedicated team have made us one of the leading recruitment firms in the Southeast.</p>
+        <p>We believe in fostering strong partnerships built on trust, integrity, and mutual success. Our approach is deeply rooted in consultation — we take the time to understand the unique requirements and culture of each client before we ever send a résumé.</p>
+        <p>Based in Atlanta and serving clients across the nation, our specialized divisions cover Accounting &amp; Finance, Legal, Construction, Marketing, Healthcare Finance, Administrative, and HR &amp; Recruiting.</p>
+        <div class="about-pills">
+          <div class="pill">🏙 Atlanta-based</div>
+          <div class="pill">📊 Accounting &amp; Finance</div>
+          <div class="pill">⚖️ Legal</div>
+          <div class="pill">🏗️ Construction</div>
+          <div class="pill">🏥 Healthcare Finance</div>
+          <div class="pill">📣 Marketing</div>
+          <div class="pill">🤝 HR &amp; Recruiting</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section process" id="process">
+  <div class="section-inner">
+    <div class="section-tag">How It Works</div>
+    <h2>From Brief to Hired<br>in Four Clear Steps</h2>
+    <p class="section-sub">No black boxes. You'll know exactly where your search stands at every stage.</p>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Discovery Call</h3>
+        <p>We learn your business, role, culture, and success metrics — going far beyond the job description.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Tell Us Your Needs</h3>
+        <p>After the call we have a clear picture of your requirements, timeline, and must-have qualities.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Vetted Shortlist</h3>
+        <p>You receive a curated shortlist of 3–5 pre-interviewed, confirmed-interested candidates — no résumé flood.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Close &amp; Onboard</h3>
+        <p>We manage offer negotiation, counteroffers, and stay engaged through the first 90 days to protect your investment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVISIONS -->
+<section class="section divisions" id="divisions">
+  <div class="section-inner">
+    <div class="section-tag">Our Divisions</div>
+    <h2>Specialized Practice Areas</h2>
+    <p class="section-sub">We focus where we're best — six specialized divisions covering every level from individual contributor to C-suite.</p>
+    <div class="div-grid">
+      <div class="div-card">
+        <h3><span>📊</span> Accounting &amp; Finance</h3>
+        <ul>
+          <li>CFO / VP Finance / Controller</li>
+          <li>Accounting Manager / Senior Accountant</li>
+          <li>Financial Analyst / FP&amp;A</li>
+          <li>Tax Manager / Tax Analyst</li>
+          <li>Internal Audit &amp; Compliance</li>
+          <li>AP / AR / Payroll Manager</li>
+          <li>Bookkeeper / Staff Accountant</li>
+        </ul>
+      </div>
+      <div class="div-card">
+        <h3><span>⚖️</span> Legal</h3>
+        <ul>
+          <li>Attorneys</li>
+          <li>Contracts Administrators</li>
+          <li>Paralegals</li>
+          <li>Legal Assistants &amp; Secretaries</li>
+          <li>Litigation Support</li>
+          <li>Legal Billing</li>
+        </ul>
+      </div>
+      <div class="div-card">
+        <h3><span>🏗️</span> Construction</h3>
+        <ul>
+          <li>Project Manager / Superintendent</li>
+          <li>Estimator</li>
+          <li>Project Coordinator</li>
+          <li>Field Service Technicians</li>
+          <li>Electricians &amp; Mechanics</li>
+          <li>Maintenance Technicians</li>
+        </ul>
+      </div>
+      <div class="div-card">
+        <h3><span>🏥</span> Healthcare Finance</h3>
+        <ul>
+          <li>Healthcare CFO / Controller</li>
+          <li>Revenue Cycle Manager</li>
+          <li>Healthcare Financial Analyst</li>
+          <li>Medical Billing &amp; Coding</li>
+          <li>Compliance Officer</li>
+        </ul>
+      </div>
+      <div class="div-card">
+        <h3><span>📣</span> Marketing</h3>
+        <ul>
+          <li>Marketing Director / VP Marketing</li>
+          <li>Marketing Manager</li>
+          <li>Digital Marketing Specialist</li>
+          <li>Brand &amp; Content Manager</li>
+          <li>SEO / Paid Media</li>
+        </ul>
+      </div>
+      <div class="div-card">
+        <h3><span>🤝</span> Administrative &amp; HR</h3>
+        <ul>
+          <li>HR Manager / HR Generalist</li>
+          <li>Talent Acquisition Specialist</li>
+          <li>Executive Assistant</li>
+          <li>Office Manager</li>
+          <li>General Office Support</li>
+          <li>Recruiting Professionals</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials" id="testimonials">
+  <div class="section-inner">
+    <div class="section-tag">What Clients Say</div>
+    <h2>Built on Trust,<br>Proven by Results</h2>
+    <p class="section-sub">Here's what hiring managers and candidates say about working with NorthPoint Search Group.</p>
+    <div class="test-grid">
+      <div class="test-card">
+        <div class="quote">"</div>
+        <p>NorthPoint found us a CFO in three weeks. We'd been searching for six months on our own. The caliber of candidates — and how well they understood our PE-backed environment — was exceptional.</p>
+        <div class="test-author">
+          <div class="avatar">MR</div>
+          <div>
+            <div class="author-name">Mike R.</div>
+            <div class="author-title">CEO, Manufacturing Company · Atlanta, GA</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="quote">"</div>
+        <p>They don't just send résumés. They sent us three people who each could have done the job — then helped us figure out which one was the best fit for our culture. That's the difference.</p>
+        <div class="test-author">
+          <div class="avatar">SL</div>
+          <div>
+            <div class="author-name">Sarah L.</div>
+            <div class="author-title">VP HR, Distribution Company · Charlotte, NC</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="quote">"</div>
+        <p>As a candidate, the experience was completely different. They spent an hour learning about my goals before pitching a role. I ended up in a position better than anything I'd found on my own.</p>
+        <div class="test-author">
+          <div class="avatar">JT</div>
+          <div>
+            <div class="author-name">James T.</div>
+            <div class="author-title">Director of Finance · Placed 2024</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-tag">Get in Touch</div>
+        <h2>Ready to Find Your<br>Next Great Hire?</h2>
+        <p>Schedule a free 20-minute discovery call. No obligation — just a straight conversation about whether we're the right fit for your search.</p>
+        <div class="contact-detail">
+          <div class="c-icon">📍</div>
+          <div class="c-detail">
+            <a href="#">Atlanta, Georgia</a>
+            <small>Serving clients across the Southeast &amp; nationwide</small>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="c-icon">📞</div>
+          <div class="c-detail">
+            <a href="tel:6787775627">678.777.5627</a>
+            <small>Mon – Fri, 8am – 6pm ET</small>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="c-icon">✉️</div>
+          <div class="c-detail">
+            <a href="mailto:info@northpointsg.com">info@northpointsg.com</a>
+            <small>We respond within one business day</small>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="c-icon">💼</div>
+          <div class="c-detail">
+            <a href="https://www.linkedin.com/company/northpoint-search-group" target="_blank" rel="noopener">LinkedIn</a>
+            <small>Connect with our team</small>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>Start a Search</h3>
+        <p class="form-sub">Fill this out and we'll be in touch within 24 hours.</p>
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name *</label>
+              <input type="text" id="firstName" name="firstName" placeholder="Jane" required>
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name *</label>
+              <input type="text" id="lastName" name="lastName" placeholder="Smith" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="company">Company *</label>
+            <input type="text" id="company" name="company" placeholder="Acme Corp" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Work Email *</label>
+            <input type="email" id="email" name="email" placeholder="jane@acmecorp.com" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="(404) 555-0100">
+          </div>
+          <div class="form-group">
+            <label for="division">Practice Area</label>
+            <select id="division" name="division">
+              <option value="">Select one...</option>
+              <option>Accounting &amp; Finance</option>
+              <option>Legal</option>
+              <option>Construction Project Management</option>
+              <option>Healthcare Finance</option>
+              <option>Marketing</option>
+              <option>Administrative / Executive Support</option>
+              <option>HR &amp; Recruiting</option>
+              <option>Executive Search (C-Suite / VP / Director)</option>
+              <option>Not sure yet — just exploring</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell us about the role</label>
+            <textarea id="message" name="message" placeholder="Title, key requirements, timeline, location..."></textarea>
+          </div>
+          <button type="submit" class="form-submit" id="submitBtn">Send My Request →</button>
+          <div id="form-msg"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="fl-top">NorthPoint</span>
+          <span class="fl-sub">Search Group</span>
+        </div>
+        <p>Full-service executive recruiting for finance, accounting, legal, construction, marketing, and HR professionals. Building teams that last since 2005.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Executive Search</a></li>
+          <li><a href="#services">Direct Hire</a></li>
+          <li><a href="#services">Contract Staffing</a></li>
+          <li><a href="#services">Team Build-Out</a></li>
+          <li><a href="#services">Market Intelligence</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Specialties</h4>
+        <ul>
+          <li><a href="#divisions">Accounting &amp; Finance</a></li>
+          <li><a href="#divisions">Legal</a></li>
+          <li><a href="#divisions">Construction</a></li>
+          <li><a href="#divisions">Healthcare Finance</a></li>
+          <li><a href="#divisions">Marketing</a></li>
+          <li><a href="#divisions">HR &amp; Admin</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#process">How We Work</a></li>
+          <li><a href="#testimonials">Client Stories</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="tel:6787775627">678.777.5627</a></li>
+          <li><a href="mailto:info@northpointsg.com">info@northpointsg.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 NorthPoint Search Group. All rights reserved.</p>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/company/northpoint-search-group" target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* Mobile menu */
+  const hamburger = document.getElementById('hamburger');
+  const mobNav = document.getElementById('mobNav');
+  hamburger.addEventListener('click', () => mobNav.classList.toggle('open'));
+  mobNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobNav.classList.remove('open')));
+
+  /* Nav scroll shadow */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 8);
+  }, { passive: true });
+
+  /* Contact form → hundredx API */
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const first = document.getElementById('firstName').value.trim();
+    const last  = document.getElementById('lastName').value.trim();
+    const co    = document.getElementById('company').value.trim();
+    const em    = document.getElementById('email').value.trim();
+    const msg   = document.getElementById('form-msg');
+
+    if (!first || !last || !co || !em) {
+      msg.className = 'err'; msg.textContent = 'Please fill in all required fields.'; return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) {
+      msg.className = 'err'; msg.textContent = 'Please enter a valid email address.'; return;
+    }
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true; btn.textContent = 'Sending…';
+    msg.className = ''; msg.textContent = '';
+
+    const body = {
+      first_name: first,
+      last_name:  last,
+      company:    co,
+      email:      em,
+      phone:      document.getElementById('phone').value.trim(),
+      type:       document.getElementById('division').value,
+      message:    document.getElementById('message').value.trim(),
+      source:     'northpointsg.com'
+    };
+
+    try {
+      const res  = await fetch('https://100xrecruiting.com/api/public/inquiry', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body)
+      });
+      const data = await res.json();
+      if (data.ok) {
+        msg.className = 'ok'; msg.textContent = '✓ Request sent! We\'ll be in touch within 24 hours.';
+        e.target.reset();
+      } else {
+        throw new Error(data.error || 'Server error');
+      }
+    } catch(err) {
+      msg.className = 'err'; msg.textContent = 'Something went wrong. Please call us at 678.777.5627.';
+    } finally {
+      btn.disabled = false; btn.textContent = 'Send My Request →';
+    }
+  });
+</script>
+</body>
+</html>
