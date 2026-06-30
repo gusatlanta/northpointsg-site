@@ -68,7 +68,7 @@
     .mob-nav .mob-cta { margin-top: 20px; text-align: center; padding: 14px; background: var(--grad); color: white; border-radius: 10px; border: none; }
 
     /* ── HERO ── */
-    .hero { padding: calc(var(--nav-h) + 72px) 24px 96px; background: linear-gradient(160deg, #f0fafe 0%, #eaf1f9 55%, #fff 100%); position: relative; overflow: hidden; }
+    .hero { padding: calc(var(--nav-h) + 32px) 24px 72px; background: linear-gradient(160deg, #f0fafe 0%, #eaf1f9 55%, #fff 100%); position: relative; overflow: hidden; }
     .hero::before { content: ''; position: absolute; top: -100px; right: -60px; width: 580px; height: 580px; border-radius: 50%; background: radial-gradient(circle, rgba(31,166,189,.12) 0%, transparent 70%); pointer-events: none; }
     .hero-inner { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; position: relative; z-index: 1; }
     .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--teal-lt); border: 1px solid rgba(31,166,189,.3); color: var(--teal-dark); padding: 6px 14px; border-radius: 100px; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 24px; }
@@ -103,15 +103,34 @@
     .section-sub { font-size: 1rem; color: var(--muted); max-width: 540px; line-height: 1.75; margin-bottom: 52px; }
 
     /* ── SERVICES ── */
-    .services { background: var(--white); }
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .svc-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 30px; transition: box-shadow .3s, transform .3s, border-color .3s; }
-    .svc-card:hover { box-shadow: 0 12px 40px rgba(31,166,189,.12); transform: translateY(-4px); border-color: rgba(31,166,189,.3); }
-    .svc-icon { width: 50px; height: 50px; border-radius: 12px; background: linear-gradient(135deg, var(--teal-lt), var(--blue-lt)); display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 18px; }
-    .svc-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 10px; }
-    .svc-card p { font-size: .875rem; color: var(--muted); line-height: 1.7; }
-    .svc-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-size: .82rem; font-weight: 700; color: var(--teal); transition: gap .2s; }
-    .svc-link:hover { gap: 10px; }
+    .services { background: var(--white); padding-top: 72px; padding-bottom: 0; }
+    .services-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; }
+    .svc-card {
+      position: relative; overflow: hidden; min-height: 420px;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      cursor: pointer; border-radius: 0;
+    }
+    .svc-card-bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      transition: transform .5s ease;
+    }
+    .svc-card:hover .svc-card-bg { transform: scale(1.05); }
+    .svc-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,20,40,.88) 0%, rgba(10,20,40,.4) 55%, rgba(10,20,40,.15) 100%);
+      transition: background .3s;
+    }
+    .svc-card:hover .svc-card-overlay {
+      background: linear-gradient(to top, rgba(10,20,40,.92) 0%, rgba(10,20,40,.55) 55%, rgba(10,20,40,.2) 100%);
+    }
+    .svc-card-body { position: relative; z-index: 2; padding: 28px 24px; }
+    .svc-card-body h3 { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 10px; line-height: 1.3; }
+    .svc-card-body p { font-size: .82rem; color: rgba(255,255,255,.8); line-height: 1.6; margin-bottom: 16px; }
+    .svc-link { display: inline-flex; align-items: center; gap: 5px; font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: var(--teal); transition: gap .2s; }
+    .svc-link:hover { gap: 9px; }
+    @media (max-width: 900px) { .services-grid { grid-template-columns: 1fr 1fr; } .svc-card { min-height: 320px; } }
+    @media (max-width: 600px) { .services-grid { grid-template-columns: 1fr; } }
 
     /* ── STATS BAND ── */
     .stats-band { background: var(--grad); padding: 72px 24px; }
@@ -344,40 +363,49 @@
     <p class="section-sub">Whether you need a single critical hire or a full team build-out, we tailor our approach to your timeline, culture, and growth plan.</p>
     <div class="services-grid">
       <div class="svc-card">
-        <div class="svc-icon">🔍</div>
-        <h3>Executive Search</h3>
-        <p>Retained and contingency searches for Director through C-suite roles. We surface passive candidates your internal team can't reach through deep market relationships.</p>
-        <a href="#contact" class="svc-link">Start a search →</a>
+        <div class="svc-card-bg" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80')"></div>
+        <div class="svc-card-overlay"></div>
+        <div class="svc-card-body">
+          <h3>Executive Search</h3>
+          <p>CFOs, VP Finance, and Controllers who drive strategy and lead teams with confidence.</p>
+          <a href="#contact" class="svc-link">Learn More →</a>
+        </div>
       </div>
       <div class="svc-card">
-        <div class="svc-icon">⚡</div>
-        <h3>Direct Hire Placement</h3>
-        <p>Permanent placements for mid-level roles across all our practice areas — delivered faster than the industry standard with a satisfaction guarantee.</p>
-        <a href="#contact" class="svc-link">Find talent →</a>
+        <div class="svc-card-bg" style="background-image:url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=600&q=80')"></div>
+        <div class="svc-card-overlay"></div>
+        <div class="svc-card-body">
+          <h3>Direct Hire</h3>
+          <p>Access entry-level to senior accounting and finance professionals placed for the long term.</p>
+          <a href="#contact" class="svc-link">Learn More →</a>
+        </div>
       </div>
       <div class="svc-card">
-        <div class="svc-icon">🤝</div>
-        <h3>Contract &amp; Interim Staffing</h3>
-        <p>Flexible engagements when you need expert coverage without a long-term commitment — project-based, interim leadership, or backfill.</p>
-        <a href="#contact" class="svc-link">Get coverage →</a>
+        <div class="svc-card-bg" style="background-image:url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=600&q=80')"></div>
+        <div class="svc-card-overlay"></div>
+        <div class="svc-card-body">
+          <h3>Contract &amp; Temp Staffing</h3>
+          <p>Flexible interim talent with full EOR back-office — payroll, taxes, and compliance handled.</p>
+          <a href="#contact" class="svc-link">Browse Available Talent →</a>
+        </div>
       </div>
       <div class="svc-card">
-        <div class="svc-icon">📋</div>
-        <h3>Talent Assessments</h3>
-        <p>Structured interviews, skills testing, and behavioral assessments built into every search so you only meet candidates who are truly ready to perform.</p>
-        <a href="#contact" class="svc-link">Learn more →</a>
+        <div class="svc-card-bg" style="background-image:url('https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=600&q=80')"></div>
+        <div class="svc-card-overlay"></div>
+        <div class="svc-card-body">
+          <h3>Retained Search</h3>
+          <p>Exclusive, dedicated engagement for critical hires — we go deeper, move faster, and guarantee results.</p>
+          <a href="#contact" class="svc-link">Learn More →</a>
+        </div>
       </div>
       <div class="svc-card">
-        <div class="svc-icon">🏢</div>
-        <h3>Team Build-Out</h3>
-        <p>Scaling a department? We manage multi-hire engagements from org design through onboarding — acting as an embedded recruiting partner.</p>
-        <a href="#contact" class="svc-link">Plan a build-out →</a>
-      </div>
-      <div class="svc-card">
-        <div class="svc-icon">📊</div>
-        <h3>Market Intelligence</h3>
-        <p>Compensation benchmarking, talent-pool mapping, and competitive landscape insights — so you enter every search with a realistic picture of the market.</p>
-        <a href="#contact" class="svc-link">Get a report →</a>
+        <div class="svc-card-bg" style="background-image:url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80')"></div>
+        <div class="svc-card-overlay"></div>
+        <div class="svc-card-body">
+          <h3>RPO &amp; Project Staffing</h3>
+          <p>We become your recruiting department — custom screening, video résumés, and end-to-end hiring solutions.</p>
+          <a href="#contact" class="svc-link">Learn More →</a>
+        </div>
       </div>
     </div>
   </div>
