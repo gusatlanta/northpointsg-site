@@ -188,19 +188,19 @@
     #form-msg.ok { background: #ecfdf5; color: #065f46; display: block; }
     #form-msg.err { background: #fef2f2; color: #991b1b; display: block; }
 
-    /* ── NOW PLACING CARD ── */
-    .now-placing-card { background: #f6ede0; border-radius: 16px; padding: 22px 24px; border: 1px solid rgba(210,180,140,.35); box-shadow: 0 4px 28px rgba(0,0,0,.07); }
+    /* ── CURRENT OPPORTUNITIES CARD ── */
+    .now-placing-card { background: white; border-radius: 16px; padding: 22px 24px; border: 1px solid var(--border); box-shadow: 0 4px 28px rgba(0,0,0,.07); }
     .np-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
-    .np-label { font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .13em; color: #6b5a47; }
-    .np-badge { font-size: .68rem; font-weight: 600; background: #e8d5bc; color: #8a6f54; padding: 3px 10px; border-radius: 100px; }
-    .np-job { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid rgba(210,180,140,.35); }
+    .np-label { font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .13em; color: var(--teal-dark); }
+    .np-badge { font-size: .68rem; font-weight: 600; background: var(--teal-lt); color: var(--teal-dark); padding: 3px 10px; border-radius: 100px; border: 1px solid rgba(31,166,189,.2); }
+    .np-job { display: flex; align-items: flex-start; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--border); }
     .np-job:last-child { border-bottom: none; }
-    .np-dot { width: 7px; height: 7px; border-radius: 50%; background: #d4874a; margin-top: 5px; flex-shrink: 0; }
-    .np-title { font-size: .875rem; font-weight: 700; color: #2a3a52; line-height: 1.3; transition: color .2s; }
+    .np-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); margin-top: 5px; flex-shrink: 0; }
+    .np-title { font-size: .875rem; font-weight: 700; color: var(--navy); line-height: 1.3; transition: color .2s; }
     .np-title:hover { color: var(--teal); }
-    .np-meta { font-size: .75rem; color: #8a8a8a; margin-top: 2px; }
-    .np-footer-link { display: block; text-align: center; margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(210,180,140,.35); font-size: .82rem; font-weight: 700; color: #4a5568; transition: color .2s; }
-    .np-footer-link:hover { color: var(--teal); }
+    .np-meta { font-size: .75rem; color: var(--muted); margin-top: 2px; }
+    .np-footer-link { display: block; text-align: center; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); font-size: .82rem; font-weight: 700; color: var(--teal); transition: color .2s; }
+    .np-footer-link:hover { color: var(--teal-dark); }
 
     /* ── FOOTER ── */
     footer { background: var(--navy); color: rgba(255,255,255,.6); padding: 56px 24px 32px; }
@@ -324,8 +324,8 @@
       </div>
       <div class="now-placing-card" id="nowPlacing">
         <div class="np-header">
-          <span class="np-label">Now Placing</span>
-          <span class="np-badge">Updated Weekly</span>
+          <span class="np-label">Current Opportunities</span>
+          <span class="np-badge">Active Searches</span>
         </div>
         <div class="np-list" id="npList">
           <div style="font-size:.8rem;color:#aaa;padding:10px 0;">Loading open positions…</div>
