@@ -19,10 +19,26 @@ def index():
     return send_from_directory(BASE, 'index.html')
 
 
+# Search engines and AI assistants are all welcome (listed by name so it's explicit).
+_AI_CRAWLERS = ("Googlebot", "Bingbot", "GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot",
+                "Claude-SearchBot", "Claude-User", "anthropic-ai", "PerplexityBot", "Perplexity-User",
+                "Google-Extended", "Applebot", "Applebot-Extended", "CCBot", "meta-externalagent",
+                "Amazonbot", "DuckAssistBot", "cohere-ai")
+
+
 @app.route('/robots.txt')
 def robots():
-    return Response(f"User-agent: *\nAllow: /\n\nSitemap: {CANONICAL}/sitemap.xml\n",
-                    mimetype="text/plain")
+    lines = ["User-agent: *", "Allow: /", ""]
+    for bot in _AI_CRAWLERS:
+        lines += [f"User-agent: {bot}", "Allow: /", ""]
+    lines.append(f"Sitemap: {CANONICAL}/sitemap.xml")
+    return Response("\n".join(lines) + "\n", mimetype="text/plain")
+
+
+@app.route('/llms.txt')
+def llms_txt():
+    """Plain-language summary for AI assistants (llmstxt.org convention)."""
+    return send_from_directory(BASE, 'llms.txt', mimetype="text/plain")
 
 
 @app.route('/sitemap.xml')
