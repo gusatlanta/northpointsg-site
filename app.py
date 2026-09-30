@@ -6,14 +6,24 @@ from flask import Flask, Response, abort, request, send_from_directory
 app = Flask(__name__)
 BASE = os.path.dirname(os.path.abspath(__file__))
 
-# The address written into index.html and llms.txt (canonical tag, share tags,
-# structured data). It is also the fallback when a request comes in on a host
-# we don't know.
-CANONICAL = os.environ.get("CANONICAL_URL", "https://www.northpointsg.com").rstrip("/")
+# CROSS_DOMAIN_CANONICAL_v1 (2026-09-30): the ONE address every copy of this
+# page claims as its own - canonical tag, share tags, structured data.
+#
+# It used to be northpointsg.com, and each host rewrote the address to name
+# ITSELF. That made two websites serving byte-identical content, each
+# self-canonicalising: textbook duplicate content. Google picks one and
+# suppresses the other, and inbound links split between them.
+#
+# northpointsearchgroup.com wins because it matches the brand people search
+# for, it is already what hundredx records as the firm's domain and what
+# candidate reference forms print, and Search Console shows it with the
+# larger share of traffic. northpointsg.com keeps serving the site and
+# keeps its own Search Console property; it just points here.
+CANONICAL = os.environ.get(
+    "CANONICAL_URL", "https://www.northpointsearchgroup.com").rstrip("/")
 
-# This one site answers on two addresses. Each is its own website to Google:
-# it names ITSELF in the canonical tag, the share tags, robots.txt and the
-# sitemap, so each can be verified and given a sitemap in Search Console.
+# Still needed for robots.txt and sitemap.xml, which stay PER-HOST so each
+# verified property advertises its own sitemap. Only the canonical is shared.
 _SITE_HOSTS = {
     "northpointsg.com": "https://www.northpointsg.com",
     "www.northpointsg.com": "https://www.northpointsg.com",
@@ -32,21 +42,26 @@ def _site_url() -> str:
     return _SITE_HOSTS.get(host, CANONICAL)
 
 
-def _own_address(filename: str, mimetype: str) -> Response:
-    """Serve a text file with the site's web address swapped for the one the
-    visitor is on. Email addresses (info@northpointsg.com) are left alone -
-    only the full https://www... address is replaced."""
+def _serve_text(filename: str, mimetype: str) -> Response:
+    """Serve a text file exactly as it is on disk.
+
+    Deliberately NOT per-host. This used to swap the address for whichever
+    host the visitor arrived on, which is what created the duplicate-content
+    problem: both domains claimed themselves as canonical. Every visitor now
+    gets the same CANONICAL address, so the two hosts consolidate into one
+    result instead of competing.
+
+    The files themselves are written with the canonical address, so there is
+    nothing to substitute. Keep it that way - if you reintroduce a rewrite
+    here, you reintroduce the duplicate content.
+    """
     with open(os.path.join(BASE, filename), encoding="utf-8") as f:
-        text = f.read()
-    site = _site_url()
-    if site != CANONICAL:
-        text = text.replace(CANONICAL, site)
-    return Response(text, mimetype=mimetype)
+        return Response(f.read(), mimetype=mimetype)
 
 
 @app.route('/')
 def index():
-    return _own_address('index.html', "text/html")
+    return _serve_text('index.html', "text/html")
 
 
 # Search engines and AI assistants are all welcome (listed by name so it's explicit).
@@ -68,7 +83,7 @@ def robots():
 @app.route('/llms.txt')
 def llms_txt():
     """Plain-language summary for AI assistants (llmstxt.org convention)."""
-    return _own_address('llms.txt', "text/plain")
+    return _serve_text('llms.txt', "text/plain")
 
 
 @app.route('/sitemap.xml')
