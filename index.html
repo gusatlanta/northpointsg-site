@@ -218,6 +218,13 @@
     .step-num { width: 54px; height: 54px; border-radius: 50%; margin: 0 auto 22px; background: #fff; border: 1.5px solid var(--teal); display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-size: 1.05rem; font-weight: 600; color: var(--blue-dark); position: relative; z-index: 1; box-shadow: 0 0 0 6px #fff, var(--shadow-sm); }
     .step h3 { font-size: .98rem; margin-bottom: 9px; }
     .step p { font-size: .84rem; color: var(--text-muted); line-height: 1.7; }
+    .example-callout { display: flex; gap: 18px; align-items: flex-start; margin-top: 44px; padding: 26px 28px; background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--teal); border-radius: var(--radius); box-shadow: var(--shadow-sm); text-align: left; }
+    .example-callout .example-icon { flex: 0 0 auto; width: 44px; height: 44px; border-radius: 50%; background: var(--teal-lt); color: var(--blue-dark); display: flex; align-items: center; justify-content: center; }
+    .example-callout .example-icon svg { width: 22px; height: 22px; }
+    .example-callout .section-tag { margin-bottom: 6px; }
+    .example-callout h3 { font-size: 1.05rem; margin-bottom: 8px; }
+    .example-callout p { font-size: .94rem; color: var(--text-muted); line-height: 1.7; max-width: 860px; }
+    @media (max-width: 560px) { .example-callout { flex-direction: column; padding: 22px 20px; } }
 
     /* ── DIVISIONS ── */
     .divisions { background: var(--off-white); }
@@ -776,12 +783,21 @@
       <div class="step">
         <div class="step-num">3</div>
         <h3>Vetted Shortlist</h3>
-        <p>You receive a curated shortlist of 3–5 pre-interviewed, confirmed-interested candidates — no résumé flood.</p>
+        <p>A curated shortlist of 3–5 pre-interviewed, confirmed-interested candidates. We build a screening questionnaire with your input, and every résumé comes with the candidate's answers — your questions answered up front.</p>
       </div>
       <div class="step">
         <div class="step-num">4</div>
         <h3>Close &amp; Onboard</h3>
         <p>We manage offer negotiation, counteroffers, and stay engaged through the first 90 days to protect your investment.</p>
+      </div>
+    </div>
+    <!-- Same example as stafffinancial.com: what a custom screening questionnaire looks like in practice. -->
+    <div class="example-callout">
+      <div class="example-icon"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></div>
+      <div>
+        <div class="section-tag">Example: Screening Questionnaire</div>
+        <h3>Built around one client's system implementation</h3>
+        <p>A client running five different systems wanted to select and implement one new system &mdash; positioning the company for its next 10 years of growth. Implementation experience was the key skill for the role, so we built their screening questionnaire around it. Every r&eacute;sum&eacute; arrived with the candidate's answers about the system selections and implementations they'd led, so the client could see who had that experience before the first call.</p>
       </div>
     </div>
   </div>
