@@ -303,12 +303,19 @@
 
     /* ── RESPONSIVE ── */
     /* Small laptops / tablets: the full nav doesn't fit beside both buttons.
-       The phone number is already in the top bar, so drop it here and
-       tighten the links rather than let them wrap or push the CTA off-screen. */
+       The original fix dropped the phone button here because the top bar
+       carried the number -- but the top bar is retired now, so keep the
+       button as long as it fits and only drop it when it genuinely can't.
+       The number is in the mobile menu, the contact block and the footer. */
     .nav-links a { white-space: nowrap; }
     @media (max-width: 1140px) {
-      .nav-inner { gap: 20px; }
-      .nav-links { gap: 20px; }
+      .nav-inner { gap: 18px; }
+      .nav-links { gap: 0; }
+      .nav-links a { padding: 8px 7px; font-size: .84rem; }
+      .nav-ctas { gap: 8px; }
+      .nav-ctas .btn { padding: 10px 13px; font-size: .82rem; }
+    }
+    @media (max-width: 1010px) {
       .nav-ctas .btn-outline { display: none; }
     }
     @media (max-width: 1040px) {
@@ -518,6 +525,8 @@
   <a href="#process">How We Work</a>
   <a href="#contact">Contact</a>
   <a href="https://host.pcrecruiter.net/pcrbin/jobboard.aspx?uid=Staff%20Financial.npsg" target="_blank" rel="noopener">Find a Job</a>
+  <a href="tel:6787775627">678.777.5627</a>
+  <a href="mailto:info@northpointsg.com">info@northpointsg.com</a>
   <a href="#contact" class="mob-cta">Start a Search →</a>
 </div>
 
