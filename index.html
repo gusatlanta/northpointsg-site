@@ -190,7 +190,7 @@
     /* ── STATS BAND ── */
     .stats-band { background: var(--grad-dark); padding: 72px 24px; position: relative; overflow: hidden; }
     .stats-band::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--grad-brand); }
-    .stats-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; text-align: center; position: relative; z-index: 1; }
+    .stats-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center; position: relative; z-index: 1; }
     .stat-item { padding: 0 16px; }
     .stat-item + .stat-item { border-left: 1px solid rgba(255,255,255,.12); }
     .stat-item .num { font-family: var(--font-head); font-size: clamp(2.2rem, 3.4vw, 3rem); font-weight: 600; color: #fff; line-height: 1; letter-spacing: -.02em; }
@@ -301,6 +301,64 @@
     .social-btn { width: 34px; height: 34px; border-radius: 8px; background: rgba(255,255,255,.07); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.65); font-size: .85rem; font-weight: 600; transition: background .2s, color .2s; }
     .social-btn:hover { background: var(--teal); color: #fff; }
 
+
+    /* ── TALENT SPOTLIGHT (marquee of blinded cards) ── */
+    .spotlight { background: var(--white); padding-bottom: 24px; }
+    .spot-head { max-width: 1180px; margin: 0 auto 34px; padding: 0 24px; display: flex; align-items: flex-end; justify-content: space-between; gap: 28px; }
+    .spot-head .section-sub { margin-bottom: 0; }
+    .mpc-marquee { overflow: hidden; position: relative; }
+    .mpc-marquee::before, .mpc-marquee::after { content: ''; position: absolute; top: 0; bottom: 0; width: 90px; z-index: 2; pointer-events: none; }
+    .mpc-marquee::before { left: 0; background: linear-gradient(90deg, var(--white), rgba(255,255,255,0)); }
+    .mpc-marquee::after { right: 0; background: linear-gradient(270deg, var(--white), rgba(255,255,255,0)); }
+    .mpc-track { display: flex; gap: 16px; width: max-content; padding: 6px 90px 16px; animation: mpcScroll 70s linear infinite; }
+    .mpc-marquee:hover .mpc-track, .mpc-marquee:focus-within .mpc-track { animation-play-state: paused; }
+    @keyframes mpcScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) {
+      .mpc-track { animation: none; width: auto; overflow-x: auto; flex-wrap: nowrap; }
+      .mpc-marquee::before, .mpc-marquee::after { display: none; }
+    }
+    .mpc-card { display: block; width: 292px; flex-shrink: 0; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; box-shadow: var(--shadow-sm); transition: transform .25s, box-shadow .25s, border-color .25s; }
+    .mpc-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: rgba(42,156,192,.4); }
+    .mpc-card-head { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; }
+    .mpc-avatar { width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-weight: 600; font-size: .9rem; color: #fff; background: var(--grad-brand); }
+    .mpc-card-title { font-family: var(--font-head); font-weight: 600; color: var(--ink); font-size: .96rem; line-height: 1.25; }
+    .mpc-card-loc { display: flex; align-items: center; gap: 5px; font-size: .8rem; color: var(--text-muted); margin-top: 3px; }
+    .mpc-badges { display: flex; flex-wrap: wrap; gap: 6px; }
+    .mpc-badge { font-size: .72rem; font-weight: 600; padding: 3px 9px; border-radius: 20px; background: var(--light); color: #475569; border: 1px solid var(--border); }
+    .mpc-badge.gold { background: #e8f5fa; color: var(--blue-dark); border-color: #c5e5f0; }
+    .mpc-badge.green { background: #ecfdf3; color: #15803d; border-color: #bbf7d0; }
+    .mpc-card-cta { display: block; margin-top: 12px; font-size: .84rem; font-weight: 600; color: var(--blue); }
+
+    /* ── TALENT SEARCH BAR ── */
+    .db-search { display: flex; gap: 8px; max-width: 680px; margin: 34px auto 0; background: var(--off-white); border: 1px solid var(--border); border-radius: 14px; padding: 8px; }
+    .db-search input { flex: 1; border: none; background: none; padding: 12px 14px; font-family: inherit; font-size: .92rem; color: var(--text); outline: none; min-width: 0; }
+    .db-search input::placeholder { color: #94a3b8; }
+    @media (max-width: 600px) { .db-search { flex-direction: column; } }
+
+    /* ── AVAILABLE NOW + EOR (dark bands) ── */
+    .band-dark { background: var(--grad-dark); color: #fff; padding: var(--pad-y) 24px; position: relative; overflow: hidden; }
+    .band-dark::after { content: ''; position: absolute; right: -80px; bottom: -110px; width: 400px; height: 480px; background: url('img/np-mark.png') no-repeat center / contain; opacity: .06; pointer-events: none; }
+    .band-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; position: relative; z-index: 1; }
+    .band-dark .section-tag { color: var(--teal-light); }
+    .band-dark .section-tag::before { background: var(--teal-light); }
+    .band-dark h2 { color: #fff; }
+    .band-dark h2 em { color: var(--teal-light); font-style: normal; }
+    .band-dark > .band-inner p.band-sub { color: rgba(255,255,255,.75); font-size: 1.02rem; line-height: 1.75; margin-bottom: 30px; }
+    .band-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-white { background: #fff; color: var(--blue-dark); border: none; }
+    .btn-white:hover { background: var(--light); }
+    .band-dark .btn-outline { color: #fff; border-color: rgba(255,255,255,.32); background: rgba(255,255,255,.05); }
+    .band-dark .btn-outline:hover { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.55); }
+    .feat-list { display: flex; flex-direction: column; gap: 26px; }
+    .feat { display: flex; gap: 16px; align-items: flex-start; }
+    .feat-ico { width: 42px; height: 42px; border-radius: 12px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1.05rem; background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.16); }
+    .feat h3 { font-size: .97rem; color: #fff; margin-bottom: 5px; }
+    .feat p { font-size: .87rem; color: rgba(255,255,255,.7); line-height: 1.65; }
+    @media (max-width: 900px) {
+      .band-inner { grid-template-columns: 1fr; gap: 44px; }
+      .spot-head { flex-direction: column; align-items: flex-start; gap: 18px; }
+    }
+
     /* ── RESPONSIVE ── */
     /* Small laptops / tablets: the full nav doesn't fit beside both buttons.
        The original fix dropped the phone button here because the top bar
@@ -334,7 +392,7 @@
       .hero-visual { display: flex; }
       .services-grid { grid-template-columns: 1fr 1fr; }
       .svc-card { min-height: 330px; }
-      .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 28px 20px; }
       .stat-item { padding: 0 8px; }
       .about-grid, .contact-grid { grid-template-columns: 1fr; }
       .about-badge { right: 12px; bottom: -18px; }
@@ -645,8 +703,27 @@
       <div class="num" data-target="20" data-suffix="+">20<sup>+</sup></div>
       <div class="lbl">Years placing accounting, finance<br>and professional talent</div>
     </div>
+    <div class="stat-item">
+      <div class="num">1,000<sup>+</sup></div>
+      <div class="lbl">Candidate video introductions<br>filmed and on file</div>
+    </div>
   </div>
 </div>
+
+<!-- TALENT SPOTLIGHT - live from the MPC marketing feed. Hidden until rows arrive. -->
+<section class="section spotlight" id="spotlight" style="display:none;">
+  <div class="spot-head">
+    <div>
+      <div class="section-tag">Talent Spotlight</div>
+      <h2>Candidates We&rsquo;re Marketing <em>Right Now</em></h2>
+      <p class="section-sub">Professionals we are actively representing. Names are hidden to protect confidentiality &mdash; open any card to read the blinded r&eacute;sum&eacute;.</p>
+    </div>
+    <a href="#talent" class="btn btn-outline" style="flex-shrink:0;">Browse all talent &rarr;</a>
+  </div>
+  <div class="mpc-marquee" aria-label="Candidates currently being marketed">
+    <div class="mpc-track" id="mpcTrack"></div>
+  </div>
+</section>
 
 <!-- ABOUT -->
 <section class="section about" id="about">
@@ -811,6 +888,93 @@
     </div>
   </div>
 </section>
+
+<!-- AVAILABLE NOW - every NorthPoint discipline, not finance only -->
+<div class="band-dark" id="talent">
+  <div class="band-inner">
+    <div>
+      <div class="section-tag">Available Now</div>
+      <h2>Talent Ready to Start <em>Today</em></h2>
+      <p class="band-sub">Browse our live pool of pre-vetted professionals across all six practice areas &mdash; accounting and finance, legal, construction, healthcare finance, marketing, and administrative and HR. When you are ready, we step in as Employer of Record and handle payroll, taxes and compliance.</p>
+      <div class="band-actions">
+        <a href="#talent-results" class="btn btn-hero btn-white">Browse available talent &rarr;</a>
+        <a href="#contact" class="btn btn-hero btn-outline">Request talent</a>
+      </div>
+    </div>
+    <div class="feat-list">
+      <div class="feat">
+        <div class="feat-ico">&#128269;</div>
+        <div>
+          <h3>Browse blinded profiles</h3>
+          <p>Search by title, skill and location. Nothing to sign up for just to look.</p>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-ico">&#128179;</div>
+        <div>
+          <h3>We payroll them for you</h3>
+          <p>We act as Employer of Record &mdash; payroll, taxes, workers&rsquo; comp and W-2 all covered. You get one invoice.</p>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-ico">&#9889;</div>
+        <div>
+          <h3>Ready to start immediately</h3>
+          <p>Everyone on this list has flagged themselves available now &mdash; no notice period, no search lag.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LIVE TALENT BROWSER -->
+<section class="section" id="talent-results">
+  <div class="section-inner">
+    <div class="section-tag">Search Our Bench</div>
+    <h2>Every Discipline We Recruit</h2>
+    <p class="section-sub">Search the same database our recruiters work from. R&eacute;sum&eacute;s are blinded &mdash; tell us who you want and we make the introduction.</p>
+    <form class="db-search" onsubmit="return npTalentSearch(this)">
+      <input type="text" name="q" id="npq" placeholder="Controller, Paralegal, Project Manager, HR Generalist&hellip;" aria-label="Search our candidate database">
+      <button type="submit" class="btn btn-primary">Search the bench</button>
+    </form>
+    <div class="about-pills" style="justify-content:center;margin-top:18px;" id="npChips"></div>
+    <div id="npMeta" style="text-align:center;font-size:.85rem;color:var(--text-muted);margin-top:26px;"></div>
+    <div class="mpc-track" id="npResults" style="display:none;flex-wrap:wrap;width:auto;padding:24px 0 0;animation:none;justify-content:center;"></div>
+  </div>
+</section>
+
+<!-- EMPLOYER OF RECORD -->
+<div class="band-dark">
+  <div class="band-inner">
+    <div>
+      <div class="section-tag">Employer of Record</div>
+      <h2>You Get the Talent.<br><em>We Handle the Rest.</em></h2>
+      <p class="band-sub">NorthPoint Search Group acts as the Employer of Record for every temp and contract placement. One simple bill rate. No HR overhead on your end.</p>
+      <div class="band-actions">
+        <a href="#talent-results" class="btn btn-hero btn-white">Browse available talent &rarr;</a>
+        <a href="#contact" class="btn btn-hero btn-outline">Request talent</a>
+      </div>
+    </div>
+    <div class="feat-list">
+      <div class="feat">
+        <div class="feat-ico">&#128179;</div>
+        <div><h3>Weekly payroll</h3><p>We payroll your contractors every week and send one clean invoice at your agreed bill rate.</p></div>
+      </div>
+      <div class="feat">
+        <div class="feat-ico">&#128737;</div>
+        <div><h3>Workers&rsquo; comp &amp; insurance</h3><p>Fully covered under our policy. No exposure for your organization.</p></div>
+      </div>
+      <div class="feat">
+        <div class="feat-ico">&#128203;</div>
+        <div><h3>Taxes &amp; compliance</h3><p>All federal, state and FICA withholdings handled. W-2 issued at year end.</p></div>
+      </div>
+      <div class="feat">
+        <div class="feat-ico">&#128260;</div>
+        <div><h3>Easy conversion</h3><p>Like the person? Convert them to full time any time with a simple conversion agreement.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- CONTACT -->
 <section class="section contact" id="contact">
@@ -1049,6 +1213,94 @@
       btn.disabled = false; btn.textContent = 'Send My Request →';
     }
   });
+</script>
+<script>
+/* TALENT_FEEDS_v1 - both feeds fail CLOSED: a section only appears once real
+   rows come back, so a dead API leaves no empty shell on the page. */
+(function(){
+  var API = 'https://100xrecruiting.com/api/public';
+  var PIN = '<svg class="ico" aria-hidden="true" width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>';
+  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  function initials(t){
+    var w=(t||'').replace(/[^A-Za-z ]/g,'').split(' ').filter(Boolean);
+    return ((w[0]||'N')[0]+((w[1]||'P')[0]||'')).toUpperCase();
+  }
+  /* NSG places in the U.S. Southeast and nationwide. The available-now pool
+     also holds the offshore VA bench (Udaipur, Tagum City, Daet...), which is a
+     different 100X line and does not belong on this page. */
+  function isUS(loc){
+    var s=String(loc||'').trim();
+    if(!s) return false;
+    return /,\s*[A-Z]{2}$/.test(s) || /United States/i.test(s)
+        || /Metropolitan Area$/i.test(s) || /^Remote/i.test(s);
+  }
+  function card(c, href){
+    var b='';
+    (c.badges||[]).slice(0,3).forEach(function(x){
+      b+='<span class="mpc-badge'+(/public|big 4|cpa/i.test(x)?' gold':'')+'">'+esc(x)+'</span>';
+    });
+    (c.systems||[]).slice(0,2).forEach(function(x){ b+='<span class="mpc-badge">'+esc(x)+'</span>'; });
+    if(c.years)  b+='<span class="mpc-badge">'+esc(c.years)+'</span>';
+    if(c.salary) b+='<span class="mpc-badge green">'+esc(c.salary)+'</span>';
+    var open=href?'<a class="mpc-card" href="'+esc(href)+'" target="_blank" rel="noopener">':'<div class="mpc-card">';
+    var shut=href?'</a>':'</div>';
+    var cta=href?'<span class="mpc-card-cta">View blinded r&eacute;sum&eacute; &rarr;</span>'
+                :'<span class="mpc-card-cta">Ask us about this candidate &rarr;</span>';
+    return open
+      +'<div class="mpc-card-head"><div class="mpc-avatar">'+initials(c.title)+'</div>'
+      +'<div><div class="mpc-card-title">'+esc(c.title||'Professional')+'</div>'
+      +'<div class="mpc-card-loc">'+PIN+' '+esc(c.location||'Southeast US')+'</div></div></div>'
+      +(b?'<div class="mpc-badges">'+b+'</div>':'')+cta+shut;
+  }
+
+  /* 1. Talent Spotlight - the MPC marketing feed (these carry share_url). */
+  fetch(API+'/mpc-feed?limit=16').then(function(r){return r.json();}).then(function(d){
+    var list=((d&&d.ok&&d.candidates)||[]).filter(function(c){return isUS(c.location);});
+    if(!list.length) return;
+    var html=list.map(function(c){return card(c, c.share_url||'');}).join('');
+    document.getElementById('mpcTrack').innerHTML = html+html;  /* doubled for the loop */
+    document.getElementById('spotlight').style.display='block';
+  }).catch(function(){});
+
+  /* 2. The bench - one search endpoint, every discipline. Search results have
+        no share_url, so those cards are not links. */
+  var CHIPS=['Controller','Staff Accountant','Paralegal','Project Manager',
+             'Marketing Manager','Human Resources','Executive Assistant',
+             'Revenue Cycle'];
+  var chipBox=document.getElementById('npChips');
+  if(chipBox){
+    chipBox.innerHTML=CHIPS.map(function(c){
+      return '<button type="button" class="pill" data-q="'+esc(c)+'">'+esc(c)+'</button>';
+    }).join('');
+    chipBox.addEventListener('click',function(e){
+      var b=e.target.closest('[data-q]'); if(!b) return;
+      document.getElementById('npq').value=b.getAttribute('data-q');
+      run(b.getAttribute('data-q'));
+    });
+  }
+  function run(q){
+    var meta=document.getElementById('npMeta'), box=document.getElementById('npResults');
+    meta.textContent='Searching\u2026';
+    var url=API+'/candidates/search?page=1'+(q?('&title='+encodeURIComponent(q)):'&temp=1');
+    fetch(url).then(function(r){return r.json();}).then(function(d){
+      var rows=((d&&(d.results||d.candidates))||[]).filter(function(c){return isUS(c.location);});
+      if(!rows.length){
+        meta.textContent='No blinded profiles matched that. Try another title, or just ask us.';
+        box.style.display='none'; return;
+      }
+      var total=d.total||rows.length;
+      meta.innerHTML=q ? ('<strong>'+total+'</strong> blinded profile'+(total==1?'':'s')+' matching &ldquo;'+esc(q)+'&rdquo;')
+                       : 'Professionals flagged available to start right now &mdash; newest first.';
+      box.innerHTML=rows.map(function(c){return card(c,'');}).join('');
+      box.style.display='flex';
+    }).catch(function(){
+      meta.textContent='Talent search is momentarily unavailable \u2014 call 678.777.5627 and we will look for you.';
+      box.style.display='none';
+    });
+  }
+  window.npTalentSearch=function(f){ run((f.q.value||'').trim()); return false; };
+  run('');   /* open on the available-now pool */
+})();
 </script>
 </body>
 </html>
