@@ -247,6 +247,15 @@
     .social-btn:hover { background: var(--teal); color: #fff; }
 
     /* ── RESPONSIVE ── */
+    /* Small laptops / tablets: the full nav doesn't fit beside both buttons.
+       The phone number is already in the top bar, so drop it here and
+       tighten the links rather than let them wrap or push the CTA off-screen. */
+    .nav-links a { white-space: nowrap; }
+    @media (max-width: 1140px) {
+      .nav-inner { gap: 20px; }
+      .nav-links { gap: 20px; }
+      .nav-ctas .btn-outline { display: none; }
+    }
     @media (max-width: 1040px) {
       .hero-inner { gap: 48px; }
       .about-grid { gap: 56px; }
@@ -533,7 +542,7 @@
         <div class="svc-card-overlay"></div>
         <div class="svc-card-body">
           <h3>Retained Search</h3>
-          <p>Exclusive, dedicated engagement for critical hires — we go deeper, move faster, and guarantee results.</p>
+          <p>Exclusive, dedicated engagement for critical hires — we go deeper, move faster, and back every placement with our replacement guarantee.</p>
           <a href="#contact" class="svc-link">Learn More →</a>
         </div>
       </div>
@@ -859,7 +868,7 @@
         <ul>
           <li><a href="#about">About Us</a></li>
           <li><a href="#process">How We Work</a></li>
-          <li><a href="#testimonials">Client Stories</a></li>
+          <li><a href="#testimonials">What's Different</a></li>
           <li><a href="#contact">Contact</a></li>
           <li><a href="tel:6787775627">678.777.5627</a></li>
           <li><a href="mailto:info@northpointsg.com">info@northpointsg.com</a></li>
