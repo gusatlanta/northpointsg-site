@@ -73,12 +73,31 @@ def llms_txt():
 
 @app.route('/sitemap.xml')
 def sitemap():
+    """The site is one page, so the sitemap is one URL - and that is correct.
+
+    Deliberately NOT listed:
+      - the #section anchors. Google resolves a fragment to the page it sits
+        on, so "/#services" is the same URL as "/". Listing them adds nothing
+        and only pads the file.
+      - the job board, which lives on host.pcrecruiter.net. A sitemap may only
+        contain URLs on its own host.
+      - /llms.txt and /robots.txt, which are not pages for search results.
+
+    If this site is ever split into real pages (services, practice areas,
+    about), list them here - that is the change that would actually give
+    Search Console something to work with.
+    """
+    # index.html's mtime is the deploy time on Render, which is a fair answer
+    # to "when did this page last change". Full W3C datetime rather than a
+    # bare date so there is no ambiguity about the timezone.
     lastmod = datetime.fromtimestamp(os.path.getmtime(os.path.join(BASE, 'index.html')),
-                                     tz=timezone.utc).strftime('%Y-%m-%d')
+                                     tz=timezone.utc).strftime('%Y-%m-%dT%H:%M:%S+00:00')
     xml = ('<?xml version="1.0" encoding="UTF-8"?>\n'
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
            f'  <url><loc>{_site_url()}/</loc><lastmod>{lastmod}</lastmod>'
-           '<changefreq>monthly</changefreq><priority>1.0</priority></url>\n'
+           # the page now carries two live candidate feeds, so it genuinely
+           # changes more often than the old "monthly" claimed.
+           '<changefreq>weekly</changefreq><priority>1.0</priority></url>\n'
            '</urlset>\n')
     return Response(xml, mimetype="application/xml")
 
