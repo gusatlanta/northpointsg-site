@@ -302,6 +302,15 @@
     .social-btn:hover { background: var(--teal); color: #fff; }
 
     /* ── RESPONSIVE ── */
+    /* Small laptops / tablets: the full nav doesn't fit beside both buttons.
+       The phone number is already in the top bar, so drop it here and
+       tighten the links rather than let them wrap or push the CTA off-screen. */
+    .nav-links a { white-space: nowrap; }
+    @media (max-width: 1140px) {
+      .nav-inner { gap: 20px; }
+      .nav-links { gap: 20px; }
+      .nav-ctas .btn-outline { display: none; }
+    }
     @media (max-width: 1040px) {
       .hero-inner { gap: 44px; }
       .about-grid { gap: 52px; }
