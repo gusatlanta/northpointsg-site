@@ -956,7 +956,7 @@
     </form>
     <div class="about-pills" style="justify-content:center;margin-top:18px;" id="npChips"></div>
     <div id="npMeta" style="text-align:center;font-size:.85rem;color:var(--text-muted);margin-top:26px;"></div>
-    <div class="mpc-track" id="npResults" style="display:none;flex-wrap:wrap;width:auto;padding:24px 0 0;animation:none;justify-content:center;"></div>
+    <div class="mpc-track" id="npResults" style="display:none;flex-wrap:wrap;width:auto;padding:24px 0 0;animation:none;justify-content:center;max-height:1040px;overflow-y:auto;"></div>
   </div>
 </section>
 
@@ -1297,11 +1297,52 @@
       run(b.getAttribute('data-q'));
     });
   }
+  /* METRO_ATLANTA_BENCH_v1 - the bench lists EVERY metro Atlanta profile, newest
+     first: 100 a call, each page appended as it lands, in a scrolling box. The
+     API echoes metro:"atlanta" when it applied the filter; without that echo
+     (an older API) the page falls back to the previous single-page view
+     rather than listing the whole country. */
+  var runNo=0;
   function run(q){
+    var mine=++runNo;
     var meta=document.getElementById('npMeta'), box=document.getElementById('npResults');
     meta.textContent='Searching\u2026';
+    var base=API+'/candidates/search?metro=atlanta&per=100'+(q?('&title='+encodeURIComponent(q)):'');
+    function page(n){ return fetch(base+'&page='+n).then(function(r){return r.json();}); }
+    page(1).then(function(d){
+      if(mine!==runNo) return;
+      if(!d || d.metro!=='atlanta'){ runLegacy(q, mine); return; }
+      var rows=d.results||[];
+      if(!rows.length){
+        meta.textContent='No metro Atlanta profiles matched that. Try another title, or just ask us.';
+        box.style.display='none'; return;
+      }
+      var total=d.total||rows.length, pages=d.pages||1;
+      meta.innerHTML='<strong>'+total+'</strong> metro Atlanta professional'+(total==1?'':'s')
+        +(q ? (' matching &ldquo;'+esc(q)+'&rdquo;') : ' &mdash; newest first.');
+      box.innerHTML=rows.map(function(c){return card(c,'');}).join('');
+      box.style.display='flex';
+      box.scrollTop=0;
+      var n=2;
+      (function next(){
+        if(n>pages || mine!==runNo) return;
+        page(n).then(function(m){
+          if(mine!==runNo) return;
+          box.insertAdjacentHTML('beforeend',((m&&m.results)||[]).map(function(c){return card(c,'');}).join(''));
+          n++; next();
+        }).catch(function(){});
+      })();
+    }).catch(function(){
+      if(mine!==runNo) return;
+      meta.textContent='Talent search is momentarily unavailable \u2014 call 678.777.5627 and we will look for you.';
+      box.style.display='none';
+    });
+  }
+  function runLegacy(q, mine){
+    var meta=document.getElementById('npMeta'), box=document.getElementById('npResults');
     var url=API+'/candidates/search?page=1'+(q?('&title='+encodeURIComponent(q)):'&temp=1');
     fetch(url).then(function(r){return r.json();}).then(function(d){
+      if(mine!==runNo) return;
       var rows=((d&&(d.results||d.candidates))||[]).filter(function(c){return isUS(c.location);});
       if(!rows.length){
         meta.textContent='No blinded profiles matched that. Try another title, or just ask us.';
@@ -1318,7 +1359,7 @@
     });
   }
   window.npTalentSearch=function(f){ run((f.q.value||'').trim()); return false; };
-  run('');   /* open on the available-now pool */
+  run('');   /* open on every metro Atlanta profile */
 })();
 </script>
 </body>
