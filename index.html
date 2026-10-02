@@ -445,17 +445,6 @@
     .ngc-chips { display: flex; flex-wrap: wrap; gap: 6px; }
     .ngc-chips a { display: inline-block; font-size: .78rem; font-weight: 600; color: #fff; background: var(--grad-brand); padding: 6px 11px; border-radius: 100px; text-decoration: none; transition: filter .18s, transform .18s; }
     .ngc-chips a:hover { filter: brightness(1.1); transform: translateY(-1px); color: #fff; }
-    /* SALARY_GUIDES_NP_v1 */
-    .np-guides { margin-top: 40px; background: var(--teal-lt); border: 1px solid #cfe7ef; border-radius: var(--radius-lg); padding: 30px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 30px; align-items: center; }
-    .np-guides h3 { font-family: var(--font-head); font-size: 1.35rem; font-weight: 600; line-height: 1.25; margin: 0 0 10px; }
-    .np-guides p { color: var(--text-muted); font-size: .95rem; line-height: 1.7; margin: 0; }
-    .np-guide-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-    .np-guide-links a { display: block; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; text-decoration: none; transition: border-color .2s, transform .2s; }
-    .np-guide-links a:hover { border-color: var(--teal); transform: translateY(-1px); }
-    .np-guide-links b { display: block; font-family: var(--font-head); font-weight: 600; color: var(--navy); }
-    .np-guide-links span { display: block; font-size: .84rem; color: var(--text-muted); margin-top: 2px; }
-    @media (max-width: 900px) { .np-guides { grid-template-columns: minmax(0, 1fr); } }
-    @media (max-width: 600px) { .np-guides { padding: 22px 18px; } .np-guide-links { grid-template-columns: 1fr; } }
   </style>
   <meta property="og:site_name" content="NorthPoint Search Group">
   <meta property="og:image" content="https://www.northpointsearchgroup.com/img/favicon-512.png">
@@ -640,11 +629,11 @@
     <div class="hero-visual">
       <aside class="np-guide-card" aria-label="Salary Guides 2026">
         <div class="ngc-top">
-          <a class="ngc-covers" href="#salary-guides" tabindex="-1" aria-hidden="true">
+          <div class="ngc-covers" aria-hidden="true">
             <img src="https://100xworkforce.com/static/marketing/guides/100x-workforce-legal-cover.png" alt="" width="70" height="91" loading="eager">
             <img src="https://100xworkforce.com/static/marketing/guides/100x-workforce-hr-recruiting-cover.png" alt="" width="70" height="91" loading="eager">
             <img src="https://100xworkforce.com/static/marketing/guides/100x-workforce-cover.png" alt="" width="70" height="91" loading="eager">
-          </a>
+          </div>
           <div>
             <span class="ngc-kicker">New &middot; Salary Guides 2026</span>
             <h2>What candidates are asking to be paid</h2>
@@ -937,22 +926,6 @@
       </div>
     </div>
 
-    <div class="np-guides" id="salary-guides">
-      <div class="np-guides-text">
-        <div class="section-tag">Salary Guides 2026</div>
-        <h3>What candidates in each practice area are asking to be paid</h3>
-        <p>Built from our own candidate questionnaires and U.S. Bureau of Labor Statistics data: pay by title, why people are looking, where they'll work and how often they leave.</p>
-      </div>
-      <div class="np-guide-links">
-        <a href="https://100xworkforce.com/salary-guide" target="_blank" rel="noopener"><b>Accounting &amp; Finance</b><span>Senior Accountant &middot; $95K typical ask</span></a>
-        <a href="https://100xworkforce.com/salary-guide/legal" target="_blank" rel="noopener"><b>Legal</b><span>Paralegal &middot; $82K typical ask</span></a>
-        <a href="https://100xworkforce.com/salary-guide/marketing" target="_blank" rel="noopener"><b>Marketing</b><span>Marketing professional &middot; $80K typical ask</span></a>
-        <a href="https://100xworkforce.com/salary-guide/hr-recruiting" target="_blank" rel="noopener"><b>HR &amp; Recruiting</b><span>HR Generalist &middot; $85K typical ask</span></a>
-        <a href="https://100xworkforce.com/salary-guide/operations-admin" target="_blank" rel="noopener"><b>Operations &amp; Admin</b><span>Office Manager &middot; $65K typical ask</span></a>
-        <a href="https://100xworkforce.com/salary-guide/engineering" target="_blank" rel="noopener"><b>Engineering</b><span>Controls Engineer &middot; $95K typical ask</span></a>
-        <a href="https://100xworkforce.com/salary-guide/it" target="_blank" rel="noopener"><b>IT &amp; Technology</b><span>IT Director / Manager &middot; $175K typical ask</span></a>
-      </div>
-    </div>
   </div>
 </section>
 
