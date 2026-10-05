@@ -335,6 +335,13 @@
     .mpc-badge.gold { background: #e8f5fa; color: var(--blue-dark); border-color: #c5e5f0; }
     .mpc-badge.green { background: #ecfdf3; color: #15803d; border-color: #bbf7d0; }
     .mpc-card-cta { display: block; margin-top: 12px; font-size: .84rem; font-weight: 600; color: var(--blue); }
+    /* MONEY_STORY_ON_CARD_v1 - what they did that made or saved their company
+       money, in their own words (sanitized server side). Clamped to 3 lines: the
+       marquee stretches every card to the tallest, so one long answer would
+       otherwise leave all the short cards half empty. */
+    .mpc-card-win { margin-top: 12px; padding-top: 11px; border-top: 1px solid var(--border); }
+    .mpc-win-label { display: block; font-size: .66rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--blue); margin-bottom: 4px; }
+    .mpc-win-text { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; font-size: .82rem; line-height: 1.45; color: var(--text-muted); }
 
     /* ── TALENT SEARCH BAR ── */
     .db-search { display: flex; gap: 8px; max-width: 680px; margin: 34px auto 0; background: var(--off-white); border: 1px solid var(--border); border-radius: 14px; padding: 8px; }
@@ -1304,6 +1311,9 @@
   }
   function card(c, href){
     var b='';
+    var win = c.win ? '<div class="mpc-card-win">'
+      +'<span class="mpc-win-label">Made or saved money</span>'
+      +'<span class="mpc-win-text">'+esc(c.win)+'</span></div>' : '';
     (c.badges||[]).slice(0,3).forEach(function(x){
       b+='<span class="mpc-badge'+(/public|big 4|cpa/i.test(x)?' gold':'')+'">'+esc(x)+'</span>';
     });
@@ -1318,7 +1328,7 @@
       +'<div class="mpc-card-head"><div class="mpc-avatar">'+initials(c.title)+'</div>'
       +'<div><div class="mpc-card-title">'+esc(c.title||'Professional')+'</div>'
       +'<div class="mpc-card-loc">'+PIN+' '+esc(c.location||'Southeast US')+'</div></div></div>'
-      +(b?'<div class="mpc-badges">'+b+'</div>':'')+cta+shut;
+      +(b?'<div class="mpc-badges">'+b+'</div>':'')+win+cta+shut;
   }
 
   /* 1. Talent Spotlight - the MPC marketing feed (these carry share_url). */
