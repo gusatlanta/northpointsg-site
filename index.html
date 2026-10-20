@@ -1275,9 +1275,10 @@
       email:        em,
       employer_email: em,
       phone:        document.getElementById('phone').value.trim(),
-      inquiry_type: document.getElementById('division').value || 'general',
+      inquiry_type: document.getElementById('division').value || (this.getAttribute('data-cand') ? 'candidate_inquiry' : 'general'),
       notes:        document.getElementById('message').value.trim(),
       message:      document.getElementById('message').value.trim(),
+      candidate_id: this.getAttribute('data-cand') || '',   /* BENCH_CARD_ASK_v1 */
       source:       'northpointsg.com'
     };
 
@@ -1290,6 +1291,7 @@
       if (res.ok && data.ok) {
         msg.className = 'ok'; msg.textContent = '✓ Request sent! We\'ll be in touch within 24 hours.';
         e.target.reset();
+        e.target.removeAttribute('data-cand');
       } else {
         msg.className = 'err';
         msg.textContent = data.error
@@ -1334,8 +1336,12 @@
     (c.systems||[]).slice(0,2).forEach(function(x){ b+='<span class="mpc-badge">'+esc(x)+'</span>'; });
     if(c.years)  b+='<span class="mpc-badge">'+esc(c.years)+'</span>';
     if(c.salary) b+='<span class="mpc-badge green">'+esc(c.salary)+'</span>';
-    var open=href?'<a class="mpc-card" href="'+esc(href)+'" target="_blank" rel="noopener">':'<div class="mpc-card">';
-    var shut=href?'</a>':'</div>';
+    /* BENCH_CARD_ASK_v1 - a card with no résumé link opens the Start a Search
+       form with this candidate filled in (see the click handler below). */
+    var open=href?'<a class="mpc-card" href="'+esc(href)+'" target="_blank" rel="noopener">'
+                 :'<a class="mpc-card" href="#contact" data-ask="'+esc(c.id||'')+'" data-what="'
+                   +esc((c.title||'Professional')+', '+(c.location||'Southeast US'))+'">';
+    var shut='</a>';
     var cta=href?'<span class="mpc-card-cta">View blinded r&eacute;sum&eacute; &rarr;</span>'
                 :'<span class="mpc-card-cta">Ask us about this candidate &rarr;</span>';
     return open
@@ -1354,8 +1360,26 @@
     document.getElementById('spotlight').style.display='block';
   }).catch(function(){});
 
+  /* BENCH_CARD_ASK_v1 - clicking a no-résumé card fills the Start a Search
+     message and tags the form with the candidate id, then the link's own
+     #contact jump scrolls there. Text the visitor typed is kept, not replaced. */
+  var lastAsk='';
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('[data-ask]'); if(!a) return;
+    var f=document.getElementById('contactForm'), m=document.getElementById('message');
+    if(!f||!m) return;
+    var id=a.getAttribute('data-ask');
+    var line='I would like to hear more about this candidate: '+a.getAttribute('data-what')
+            +(id?(' (ref #'+id+')'):'')+'.';
+    var cur=m.value.trim();
+    m.value=(!cur||cur===lastAsk)?line:(cur+'\n'+line);
+    lastAsk=m.value.trim();
+    f.setAttribute('data-cand', id);
+    setTimeout(function(){ var n=document.getElementById('firstName'); if(n) n.focus({preventScroll:true}); }, 600);
+  });
+
   /* 2. The bench - one search endpoint, every discipline. Search results have
-        no share_url, so those cards are not links. */
+        no share_url, so each card asks about the candidate instead. */
   var CHIPS=['Controller','Staff Accountant','Paralegal','Project Manager',
              'Marketing Manager','Human Resources','Executive Assistant',
              'Revenue Cycle'];
