@@ -1338,7 +1338,7 @@
     if(c.salary) b+='<span class="mpc-badge green">'+esc(c.salary)+'</span>';
     /* BENCH_CARD_ASK_v1 - a card with no résumé link opens the Start a Search
        form with this candidate filled in (see the click handler below). */
-    var open=href?'<a class="mpc-card" href="'+esc(href)+'" target="_blank" rel="noopener">'
+    var open=href?'<a class="mpc-card" href="'+esc(href)+'" target="_blank" rel="noopener nofollow">'
                  :'<a class="mpc-card" href="#contact" data-ask="'+esc(c.id||'')+'" data-what="'
                    +esc((c.title||'Professional')+', '+(c.location||'Southeast US'))+'">';
     var shut='</a>';
@@ -1378,8 +1378,9 @@
     setTimeout(function(){ var n=document.getElementById('firstName'); if(n) n.focus({preventScroll:true}); }, 600);
   });
 
-  /* 2. The bench - one search endpoint, every discipline. Search results have
-        no share_url, so each card asks about the candidate instead. */
+  /* 2. The bench - one search endpoint, every discipline. BENCH_RESUME_LINK_v1:
+        each result carries resume_url, which opens that candidate's blinded
+        résumé; a card without one still asks about the candidate. */
   var CHIPS=['Controller','Staff Accountant','Paralegal','Project Manager',
              'Marketing Manager','Human Resources','Executive Assistant',
              'Revenue Cycle'];
@@ -1417,7 +1418,7 @@
       var total=d.total||rows.length, pages=d.pages||1;
       meta.innerHTML='<strong>'+total+'</strong> metro Atlanta professional'+(total==1?'':'s')
         +(q ? (' matching &ldquo;'+esc(q)+'&rdquo;') : ' &mdash; newest first.');
-      box.innerHTML=rows.map(function(c){return card(c,'');}).join('');
+      box.innerHTML=rows.map(function(c){return card(c, c.resume_url||'');}).join('');
       box.style.display='flex';
       box.scrollTop=0;
       var n=2;
@@ -1425,7 +1426,7 @@
         if(n>pages || mine!==runNo) return;
         page(n).then(function(m){
           if(mine!==runNo) return;
-          box.insertAdjacentHTML('beforeend',((m&&m.results)||[]).map(function(c){return card(c,'');}).join(''));
+          box.insertAdjacentHTML('beforeend',((m&&m.results)||[]).map(function(c){return card(c, c.resume_url||'');}).join(''));
           n++; next();
         }).catch(function(){});
       })();
@@ -1448,7 +1449,7 @@
       var total=d.total||rows.length;
       meta.innerHTML=q ? ('<strong>'+total+'</strong> blinded profile'+(total==1?'':'s')+' matching &ldquo;'+esc(q)+'&rdquo;')
                        : 'Professionals flagged available to start right now &mdash; newest first.';
-      box.innerHTML=rows.map(function(c){return card(c,'');}).join('');
+      box.innerHTML=rows.map(function(c){return card(c, c.resume_url||'');}).join('');
       box.style.display='flex';
     }).catch(function(){
       meta.textContent='Talent search is momentarily unavailable \u2014 call 678.777.5627 and we will look for you.';
