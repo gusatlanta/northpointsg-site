@@ -1,0 +1,21 @@
+/* Inner-page additions (executive search, function pages). */
+.page-hero { background: var(--grad-dark); color: #fff; padding: calc(var(--nav-h) + 64px) 24px 64px; }
+.page-hero .section-inner { max-width: 900px; }
+.page-hero h1 { font-family: var(--font-head); font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.15; margin: 10px 0 16px; color: #fff; }
+.page-hero p { color: rgba(255,255,255,.85); font-size: 1.05rem; line-height: 1.75; max-width: 760px; margin-bottom: 26px; }
+.crumbs { font-size: .8rem; color: rgba(255,255,255,.7); }
+.crumbs a { color: rgba(255,255,255,.85); text-decoration: none; }
+.crumbs span { margin: 0 6px; }
+.article { padding: 64px 24px; }
+.article .section-inner { max-width: 860px; }
+.article h2 { font-family: var(--font-head); font-size: 1.5rem; color: var(--ink); margin: 36px 0 12px; }
+.article p { color: var(--text); line-height: 1.8; margin-bottom: 14px; }
+.article a { color: var(--blue-dark); }
+.faq-item { border-top: 1px solid var(--border); padding: 14px 0; }
+.faq-item summary { cursor: pointer; font-weight: 600; color: var(--ink); }
+.faq-item summary h3 { display: inline; font-size: 1rem; font-family: var(--font-body); }
+.faq-item p { margin: 10px 0 0; }
+.link-list { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; margin: 8px 0 20px; }
+.link-list a { display: block; padding: 12px 14px; border: 1px solid var(--border); border-radius: var(--radius); text-decoration: none; color: var(--ink); font-weight: 600; }
+.cta-wrap { padding: 0 24px 80px; }
+.cta-wrap .contact-form { max-width: 720px; margin: 0 auto; }

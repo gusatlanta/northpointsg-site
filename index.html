@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NorthPoint Search Group | Executive Recruiting & Staffing | Atlanta, GA</title>
-  <meta name="description" content="NorthPoint Search Group is Atlanta's full-service executive recruiting firm. We place top talent in Accounting & Finance, Legal, Construction, Marketing, HR, and Healthcare Finance since 2005.">
+  <meta name="description" content="NorthPoint Search Group is the parent brand of Staff Financial, LawStaff, MedPoint Partners, IEP Staff, and more. We run executive search for sales, marketing, and HR. Atlanta, since 2005.">
   <link rel="canonical" href="https://www.northpointsearchgroup.com/">
   <meta property="og:title" content="NorthPoint Search Group | Executive Recruiting Atlanta">
-  <meta property="og:description" content="Atlanta's full-service recruiting firm placing top talent since 2005. Accounting & Finance, Legal, Construction, Marketing, Healthcare Finance.">
+  <meta property="og:description" content="Parent brand of Staff Financial, LawStaff, MedPoint Partners, IEP Staff, Hire Military Talent, and 100X. NorthPoint's own searches cover sales, marketing, and HR.">
   <meta property="og:url" content="https://www.northpointsearchgroup.com/">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
@@ -70,6 +70,7 @@
     h1 em, h2 em, h3 em { font-style: normal; }
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
+    .about-content a, .section-sub a { color: var(--blue-dark); text-decoration: underline; text-underline-offset: 2px; }
     ::selection { background: var(--teal); color: #fff; }
     :focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; border-radius: 3px; }
     @media (prefers-reduced-motion: reduce) {
@@ -237,6 +238,13 @@
     .div-card ul li { font-size: .84rem; color: var(--text-muted); padding: 7px 0; border-bottom: 1px solid var(--border); line-height: 1.45; }
     .div-card ul li:last-child { border-bottom: none; }
     .div-card ul li::before { content: ''; display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: var(--teal); margin-right: 10px; vertical-align: middle; }
+    .brands { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .brand-card p { font-size: .9rem; color: var(--text-muted); line-height: 1.65; }
+    .brand-card h3 { margin-bottom: 8px; }
+    .brand-links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 16px; }
+    .brand-links a { font-family: var(--font-head); font-size: .78rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--blue); }
+    .brand-links a:hover { color: var(--ink); }
+    .svc-card-body p a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
 
     /* ── WHAT'S DIFFERENT ── */
     .testimonials { background: var(--white); }
@@ -295,7 +303,7 @@
     /* ── FOOTER ── */
     footer { background: var(--navy); color: rgba(255,255,255,.6); padding: 62px 24px 30px; }
     .footer-inner { max-width: 1180px; margin: 0 auto; }
-    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 50px; }
+    .footer-top { display: grid; grid-template-columns: 1.6fr repeat(5, 1fr); gap: 32px; margin-bottom: 50px; }
     .footer-brand p { font-size: .875rem; line-height: 1.75; max-width: 300px; margin-top: 18px; }
     .footer-col h4 { font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .2em; color: #fff; margin-bottom: 18px; }
     .footer-col ul { list-style: none; }
@@ -380,7 +388,7 @@
        button as long as it fits and only drop it when it genuinely can't.
        The number is in the mobile menu, the contact block and the footer. */
     .nav-links a { white-space: nowrap; }
-    @media (max-width: 1140px) {
+    @media (max-width: 1420px) {
       .nav-inner { gap: 18px; }
       .nav-links { gap: 0; }
       .nav-links a { padding: 8px 7px; font-size: .84rem; }
@@ -395,10 +403,13 @@
       .about-grid { gap: 52px; }
       .contact-grid { gap: 44px; }
     }
-    @media (max-width: 900px) {
-      :root { --pad-y: 72px; }
+    /* Extra homepage links (Our Brands, About, Contact) overflow beside the phone and Get Started below this width. */
+    @media (max-width: 1199px) {
       .nav-links, .nav-ctas { display: none; }
       .hamburger { display: flex; }
+    }
+    @media (max-width: 900px) {
+      :root { --pad-y: 72px; }
       .hero { padding: 64px 24px 68px; }
       .hero-inner { grid-template-columns: 1fr; gap: 40px; }
       .hero-sub { max-width: none; }
@@ -457,7 +468,7 @@
   <meta property="og:image" content="https://www.northpointsearchgroup.com/img/favicon-512.png">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="NorthPoint Search Group | Executive Recruiting Atlanta">
-  <meta name="twitter:description" content="Atlanta's full-service recruiting firm placing top talent since 2005. Accounting &amp; Finance, Legal, Construction, Marketing, Healthcare Finance.">
+  <meta name="twitter:description" content="Parent brand of Staff Financial, LawStaff, MedPoint Partners, IEP Staff, Hire Military Talent, and 100X. NorthPoint's own searches cover sales, marketing, and HR.">
   <meta name="twitter:image" content="https://www.northpointsearchgroup.com/img/favicon-512.png">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <script type="application/ld+json">
@@ -471,7 +482,7 @@
       "url": "https://www.northpointsearchgroup.com/",
       "logo": "https://www.northpointsearchgroup.com/img/favicon-512.png",
       "image": "https://www.northpointsearchgroup.com/img/favicon-512.png",
-      "description": "Atlanta's full-service executive recruiting and staffing firm, placing talent since 2005 in Accounting & Finance, Legal, Construction, Healthcare Finance, Marketing, and Administrative & HR.",
+      "description": "Parent brand of specialty recruiting firms, founded in 2005 in Atlanta. NorthPoint's own searches cover executive search and non-finance roles in sales, marketing, HR, construction, and administrative support. Accounting and finance, at every level including CFO and controller, is Staff Financial Group.",
       "foundingDate": "2005",
       "telephone": ["+1-678-777-5627", "+1-404-250-0790"],
       "email": "info@northpointsg.com",
@@ -482,26 +493,40 @@
         "addressCountry": "US"
       },
       "areaServed": [
-        {
-          "@type": "City",
-          "name": "Atlanta"
-        },
-        {
-          "@type": "State",
-          "name": "Georgia"
-        }
+        { "@type": "City", "name": "Atlanta" },
+        { "@type": "City", "name": "Alpharetta" },
+        { "@type": "City", "name": "Norcross" },
+        { "@type": "Place", "name": "Cumberland, Atlanta" },
+        { "@type": "Place", "name": "Buckhead, Atlanta" },
+        { "@type": "Place", "name": "Midtown, Atlanta" },
+        { "@type": "City", "name": "Marietta" },
+        { "@type": "City", "name": "Roswell" },
+        { "@type": "City", "name": "Johns Creek" },
+        { "@type": "City", "name": "Sandy Springs" },
+        { "@type": "City", "name": "Cumming" },
+        { "@type": "City", "name": "Duluth" },
+        { "@type": "City", "name": "Athens" },
+        { "@type": "State", "name": "Georgia" },
+        { "@type": "Country", "name": "United States" }
       ],
       "sameAs": [
         "https://www.linkedin.com/company/northpointsearchgroup/"
       ],
+      "subOrganization": [
+        { "@type": "EmploymentAgency", "name": "Staff Financial Group", "url": "https://www.stafffinancial.com/", "description": "Accounting and finance recruiting at every level, including CFO and controller." },
+        { "@type": "EmploymentAgency", "name": "LawStaff Group", "url": "https://www.lawstaffgroup.net/", "description": "Legal recruiting and staffing." },
+        { "@type": "EmploymentAgency", "name": "MedPoint Partners", "url": "https://www.medpointpartners.com/", "description": "Healthcare recruiting and staffing." },
+        { "@type": "EmploymentAgency", "name": "IEP Staff", "url": "https://www.iepstaff.com/", "description": "K-12 school therapy and special education staffing." },
+        { "@type": "EmploymentAgency", "name": "Hire Military Talent", "url": "https://www.hiremilitarytalent.com/", "description": "Veteran candidate recruiting." },
+        { "@type": "Organization", "name": "100X", "url": "https://100xrecruiting.com/", "sameAs": ["https://100xjobs.com/"], "description": "AI recruiting assistant and job search." }
+      ],
       "knowsAbout": [
         "Executive search",
-        "Accounting and finance recruiting",
-        "Legal recruiting",
-        "Construction recruiting",
-        "Healthcare finance recruiting",
+        "Sales recruiting",
         "Marketing recruiting",
-        "Administrative and HR staffing",
+        "HR and talent acquisition",
+        "Construction recruiting",
+        "Administrative staffing",
         "Contract and temporary staffing"
       ],
       "hasOfferCatalog": {
@@ -591,6 +616,8 @@
     </a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
+      <li><a href="/executive-search/">Executive Search</a></li>
+      <li><a href="#brands">Our Brands</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#divisions">Specialties</a></li>
       <li><a href="#process">How We Work</a></li>
@@ -599,7 +626,7 @@
     </ul>
     <div class="nav-ctas">
       <a href="tel:6787775627" class="btn btn-outline">678.777.5627</a>
-      <a href="#contact" class="btn btn-primary">Start a Search</a>
+      <a href="#contact" class="btn btn-primary">Get Started</a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -610,6 +637,8 @@
 <!-- MOBILE MENU -->
 <div class="mob-nav" id="mobNav">
   <a href="#services">Services</a>
+  <a href="/executive-search/">Executive Search</a>
+  <a href="#brands">Our Brands</a>
   <a href="#about">About</a>
   <a href="#divisions">Specialties</a>
   <a href="#process">How We Work</a>
@@ -618,18 +647,18 @@
   <a href="tel:6787775627">678.777.5627</a>
   <a href="tel:4042500790">404.250.0790</a>
   <a href="mailto:info@northpointsg.com">info@northpointsg.com</a>
-  <a href="#contact" class="mob-cta">Start a Search →</a>
+  <a href="#contact" class="mob-cta">Get Started →</a>
 </div>
 
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-inner">
     <div>
-      <div class="hero-badge">Atlanta's Full-Service Recruiting Firm Since 2005</div>
+      <div class="hero-badge">Parent Brand of Specialty Recruiting Firms Since 2005</div>
       <h1>Helping You Win<br>the <em>War on Talent</em></h1>
-      <p class="hero-sub">NorthPoint Search Group connects great companies with top-tier professionals across Accounting &amp; Finance, Legal, Construction, Marketing, Healthcare, and HR — faster, smarter, and with lasting results.</p>
+      <p class="hero-sub">NorthPoint Search Group is the parent brand for Staff Financial, LawStaff, MedPoint Partners, IEP Staff, Hire Military Talent, and 100X. We run executive search for sales, marketing, and HR ourselves. Accounting and finance, at every level, is Staff Financial Group.</p>
       <div class="hero-actions">
-        <a href="#contact" class="btn btn-primary btn-hero">Start a Search →</a>
+        <a href="#contact" class="btn btn-primary btn-hero">Get Started →</a>
         <a href="#services" class="btn btn-outline btn-hero">How We Work</a>
       </div>
     </div>
@@ -713,8 +742,8 @@
         <div class="svc-card-overlay"></div>
         <div class="svc-card-body">
           <h3>Executive Search</h3>
-          <p>CFOs, VP Finance, and Controllers who drive strategy and lead teams with confidence.</p>
-          <a href="#contact" class="svc-link">Learn More →</a>
+          <p>Senior leaders in sales, marketing, and HR. NorthPoint runs these searches directly. Accounting and finance, including CFO and controller roles, goes to <a href="https://www.stafffinancial.com/">Staff Financial Group</a>.</p>
+          <a href="/executive-search/" class="svc-link">Learn More →</a>
         </div>
       </div>
       <div class="svc-card">
@@ -722,7 +751,7 @@
         <div class="svc-card-overlay"></div>
         <div class="svc-card-body">
           <h3>Direct Hire</h3>
-          <p>Access entry-level to senior accounting and finance professionals placed for the long term.</p>
+          <p>Sales, marketing, HR, construction, and administrative professionals placed on your payroll. Accounting and finance Direct Hire is <a href="https://www.stafffinancial.com/">Staff Financial Group</a>.</p>
           <a href="#contact" class="svc-link">Learn More →</a>
         </div>
       </div>
@@ -749,7 +778,7 @@
         <div class="svc-card-overlay"></div>
         <div class="svc-card-body">
           <h3>RPO &amp; Project Staffing</h3>
-          <p>We become your recruiting department — custom screening, video introductions, and end-to-end hiring solutions.</p>
+          <p>We become your recruiting department — custom screening, optional video intros, and end-to-end hiring solutions.</p>
           <a href="#contact" class="svc-link">Learn More →</a>
         </div>
       </div>
@@ -765,16 +794,16 @@
       <div class="lbl">Founded in Atlanta,<br>serving the Southeast ever since</div>
     </div>
     <div class="stat-item">
-      <div class="num">6</div>
-      <div class="lbl">Specialties,<br>from support roles to the C-suite</div>
+      <div class="num">7</div>
+      <div class="lbl">Brands in the<br>NorthPoint family</div>
     </div>
     <div class="stat-item">
       <div class="num" data-target="20" data-suffix="+">20<sup>+</sup></div>
-      <div class="lbl">Years placing accounting, finance<br>and professional talent</div>
+      <div class="lbl">Years recruiting across<br>the Southeast and nationwide</div>
     </div>
     <div class="stat-item">
       <div class="num">1,000<sup>+</sup></div>
-      <div class="lbl">Candidate video introductions<br>filmed and on file</div>
+      <div class="lbl">Candidate video intros<br>recorded and on file</div>
     </div>
   </div>
 </div>
@@ -808,17 +837,64 @@
       <div class="about-content">
         <div class="section-tag">About NorthPoint</div>
         <h2>Recruiting Built on<br>Relationships, Not Résumés</h2>
-        <p>NorthPoint Search Group is a highly reputable full-service recruiting firm dedicated to sourcing and placing top-tier professionals across multiple industries. Since 2005, our dedicated team has made us one of the leading recruitment firms in the Southeast.</p>
+        <p>NorthPoint Search Group is the parent company of a family of specialty recruiting firms. Since 2005, that family has been one of the leading recruitment groups in the Southeast.</p>
         <p>We believe in fostering strong partnerships built on trust, integrity, and mutual success. Our approach is deeply rooted in consultation — we take the time to understand the unique requirements and culture of each client before we ever send a résumé.</p>
-        <p>Based in Atlanta and serving clients across the nation, our specialties cover Accounting &amp; Finance, Legal, Construction, Marketing, Healthcare Finance, Administrative, and HR &amp; Recruiting.</p>
+        <p>NorthPoint is the parent company. <a href="https://www.stafffinancial.com/">Staff Financial Group</a> handles every accounting and finance role, including CFO and controller. LawStaff, MedPoint Partners, IEP Staff, NorthPoint VAs, Hire Military Talent, and 100X sit in the same family. NorthPoint's own recruiters search for sales, marketing, HR, construction, and administrative talent.</p>
         <div class="about-pills">
           <div class="pill">🏙 Atlanta-based</div>
-          <div class="pill">📊 Accounting &amp; Finance</div>
-          <div class="pill">⚖️ Legal</div>
+          <div class="pill">Parent brand</div>
+          <div class="pill">Executive search</div>
+          <div class="pill">📣 Sales &amp; marketing</div>
+          <div class="pill">🤝 HR &amp; recruiting</div>
           <div class="pill">🏗️ Construction</div>
-          <div class="pill">🏥 Healthcare Finance</div>
-          <div class="pill">📣 Marketing</div>
-          <div class="pill">🤝 HR &amp; Recruiting</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR BRANDS -->
+<section class="section brands" id="brands">
+  <div class="section-inner">
+    <div class="section-tag">The NorthPoint Family</div>
+    <h2>Our Brands</h2>
+    <p class="section-sub">NorthPoint Search Group is the umbrella. Each brand below runs its own work. Accounting and finance, at every level, is Staff Financial Group. NorthPoint's own recruiters search for sales, marketing, HR, and other non-finance roles.</p>
+    <div class="div-grid">
+      <div class="div-card brand-card">
+        <h3><span>📊</span> Staff Financial Group</h3>
+        <p>Accounting and finance recruiting at every level, from staff accountant through CFO and controller.</p>
+        <div class="brand-links"><a href="https://www.stafffinancial.com/">stafffinancial.com</a></div>
+      </div>
+      <div class="div-card brand-card">
+        <h3><span>⚖️</span> LawStaff Group</h3>
+        <p>Legal recruiting and staffing for law firms and legal departments.</p>
+        <div class="brand-links"><a href="https://www.lawstaffgroup.net/">lawstaffgroup.net</a></div>
+      </div>
+      <div class="div-card brand-card">
+        <h3><span>🏥</span> MedPoint Partners</h3>
+        <p>Healthcare recruiting and staffing, clinical and non-clinical.</p>
+        <div class="brand-links"><a href="https://www.medpointpartners.com/">medpointpartners.com</a></div>
+      </div>
+      <div class="div-card brand-card">
+        <h3><span>🎓</span> IEP Staff</h3>
+        <p>K-12 school therapy and special education staffing, onsite or by teletherapy.</p>
+        <div class="brand-links"><a href="https://www.iepstaff.com/">iepstaff.com</a></div>
+      </div>
+      <div class="div-card brand-card">
+        <h3><span>💻</span> NorthPoint VAs</h3>
+        <p>Virtual assistants for admin, operations, and specialist support.</p>
+      </div>
+      <div class="div-card brand-card">
+        <h3><span>🎖️</span> Hire Military Talent</h3>
+        <p>Veteran candidates, screened by NorthPoint recruiters.</p>
+        <div class="brand-links"><a href="https://www.hiremilitarytalent.com/">hiremilitarytalent.com</a></div>
+      </div>
+      <div class="div-card brand-card">
+        <h3><span>⚡</span> 100X</h3>
+        <p>AI recruiting assistant and a public job search.</p>
+        <div class="brand-links">
+          <a href="https://100xrecruiting.com/">100X Recruiting</a>
+          <a href="https://100xjobs.com/">100X Jobs</a>
         </div>
       </div>
     </div>
@@ -868,12 +944,12 @@
 <!-- DIVISIONS -->
 <section class="section divisions" id="divisions">
   <div class="section-inner">
-    <div class="section-tag">What We Recruit</div>
+    <div class="section-tag">What NorthPoint Recruits</div>
     <h2>Our Specialties</h2>
-    <p class="section-sub">We focus where we're best — six specialties covering every level from individual contributor to C-suite.</p>
+    <p class="section-sub">These are NorthPoint's own searches: sales, marketing, HR, construction, and administrative roles. Accounting and finance, including healthcare finance and CFO or controller roles, is <a href="https://www.stafffinancial.com/">Staff Financial Group</a>. Legal is <a href="https://www.lawstaffgroup.net/">LawStaff Group</a>.</p>
     <div class="div-grid">
       <div class="div-card">
-        <h3><span>📊</span> Accounting &amp; Finance</h3>
+        <h3><span>📊</span> <a href="https://www.stafffinancial.com/accounting-recruiters/" style="color:inherit;text-decoration:none;">Accounting &amp; Finance</a></h3>
         <ul>
           <li>CFO / VP Finance / Controller</li>
           <li>Accounting Manager / Senior Accountant</li>
@@ -885,7 +961,7 @@
         </ul>
       </div>
       <div class="div-card">
-        <h3><span>⚖️</span> Legal</h3>
+        <h3><span>⚖️</span> <a href="https://www.lawstaffgroup.net/" style="color:inherit;text-decoration:none;">Legal</a></h3>
         <ul>
           <li>Attorneys</li>
           <li>Contracts Administrators</li>
@@ -907,7 +983,7 @@
         </ul>
       </div>
       <div class="div-card">
-        <h3><span>🏥</span> Healthcare Finance</h3>
+        <h3><span>🏥</span> <a href="https://www.stafffinancial.com/accounting-recruiters/" style="color:inherit;text-decoration:none;">Healthcare Finance</a></h3>
         <ul>
           <li>Healthcare CFO / Controller</li>
           <li>Revenue Cycle Manager</li>
@@ -917,7 +993,7 @@
         </ul>
       </div>
       <div class="div-card">
-        <h3><span>📣</span> Marketing</h3>
+        <h3><span>📣</span> <a href="/marketing-recruiters.html" style="color:inherit;text-decoration:none;">Marketing</a></h3>
         <ul>
           <li>Marketing Director / VP Marketing</li>
           <li>Marketing Manager</li>
@@ -927,7 +1003,17 @@
         </ul>
       </div>
       <div class="div-card">
-        <h3><span>🤝</span> Administrative &amp; HR</h3>
+        <h3><span>📈</span> <a href="/sales-recruiters.html" style="color:inherit;text-decoration:none;">Sales</a></h3>
+        <ul>
+          <li>CRO / VP Sales</li>
+          <li>Sales Director</li>
+          <li>Account Executive</li>
+          <li>Business Development</li>
+          <li>Sales Operations</li>
+        </ul>
+      </div>
+      <div class="div-card">
+        <h3><span>🤝</span> <a href="/hr-recruiters.html" style="color:inherit;text-decoration:none;">Administrative &amp; HR</a></h3>
         <ul>
           <li>HR Manager / HR Generalist</li>
           <li>Talent Acquisition Specialist</li>
@@ -956,7 +1042,7 @@
       </div>
       <div class="test-card">
         <div class="quote">&#127909;</div>
-        <h3>An optional video introduction</h3>
+        <h3>An optional video intro</h3>
         <p>Every candidate we present is invited to record a short video intro. It is entirely optional, so not every r&eacute;sum&eacute; will have one &mdash; but when it does, you get a read on communication and presence long before you book a call.</p>
       </div>
       <div class="test-card">
@@ -1102,7 +1188,7 @@
         </div>
       </div>
       <div class="contact-form">
-        <h3>Start a Search</h3>
+        <h3>Get Started</h3>
         <p class="form-sub">Fill this out and we'll be in touch within 24 hours.</p>
         <form id="contactForm" novalidate>
           <div class="form-row">
@@ -1131,7 +1217,7 @@
             <label for="division">Specialty</label>
             <select id="division" name="division">
               <option value="">Select one...</option>
-              <option>Accounting &amp; Finance</option>
+              <option>Accounting &amp; Finance (Staff Financial)</option>
               <option>Legal</option>
               <option>Construction Project Management</option>
               <option>Healthcare Finance</option>
@@ -1146,7 +1232,7 @@
             <label for="message">Tell us about the role</label>
             <textarea id="message" name="message" placeholder="Title, key requirements, timeline, location..."></textarea>
           </div>
-          <button type="submit" class="form-submit" id="submitBtn">Send My Request →</button>
+          <button type="submit" class="form-submit" id="submitBtn">Get Started</button>
           <div id="form-msg"></div>
         </form>
       </div>
@@ -1167,7 +1253,7 @@
             <span class="brand-tag">Recruiting Services</span>
           </span>
         </div>
-        <p>Full-service executive recruiting for finance, accounting, legal, construction, marketing, and HR professionals. Building teams that last since 2005.</p>
+        <p>Parent brand of the NorthPoint family. Our own searches cover sales, marketing, HR, and other non-finance roles. Building teams that last since 2005.</p>
       </div>
       <div class="footer-col">
         <h4>Services</h4>
@@ -1182,17 +1268,41 @@
       <div class="footer-col">
         <h4>Specialties</h4>
         <ul>
-          <li><a href="#divisions">Accounting &amp; Finance</a></li>
-          <li><a href="#divisions">Legal</a></li>
+          <li><a href="https://www.stafffinancial.com/">Accounting &amp; Finance</a></li>
+          <li><a href="https://www.lawstaffgroup.net/">Legal</a></li>
           <li><a href="#divisions">Construction</a></li>
-          <li><a href="#divisions">Healthcare Finance</a></li>
-          <li><a href="#divisions">Marketing</a></li>
-          <li><a href="#divisions">HR &amp; Admin</a></li>
+          <li><a href="https://www.stafffinancial.com/accounting-recruiters/">Healthcare Finance</a></li>
+          <li><a href="/marketing-recruiters.html">Marketing</a></li>
+          <li><a href="/sales-recruiters.html">Sales</a></li>
+          <li><a href="/hr-recruiters.html">HR &amp; Admin</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Recruiting</h4>
+        <ul>
+          <li><a href="/executive-search/">Executive Search by City</a></li>
+          <li><a href="/marketing-recruiters.html">Marketing Recruiters</a></li>
+          <li><a href="/sales-recruiters.html">Sales Recruiters</a></li>
+          <li><a href="/hr-recruiters.html">HR &amp; Recruiting</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Our Brands</h4>
+        <ul>
+          <li><a href="https://www.stafffinancial.com/">Staff Financial Group: Accounting &amp; Finance</a></li>
+          <li><a href="https://www.lawstaffgroup.net/">LawStaff Group: Legal</a></li>
+          <li><a href="https://www.medpointpartners.com/">MedPoint Partners: Healthcare</a></li>
+          <li><a href="https://www.iepstaff.com/">IEP Staff: K-12 School Therapy</a></li>
+          <li>NorthPoint VAs: Virtual Assistants</li>
+          <li><a href="https://www.hiremilitarytalent.com/">Hire Military Talent: Veterans</a></li>
+          <li><a href="https://100xrecruiting.com/">100X Recruiting</a></li>
+          <li><a href="https://100xjobs.com/">100X Jobs</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
         <ul>
+          <li><a href="#brands">Our Brands</a></li>
           <li><a href="#about">About Us</a></li>
           <li><a href="#process">How We Work</a></li>
           <li><a href="#testimonials">What's Different</a></li>
@@ -1301,7 +1411,7 @@
     } catch(err) {
       msg.className = 'err'; msg.textContent = 'Network error: ' + err.message + ' — Please call us at 678.777.5627.';
     } finally {
-      btn.disabled = false; btn.textContent = 'Send My Request →';
+      btn.disabled = false; btn.textContent = 'Get Started';
     }
   });
 </script>
