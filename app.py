@@ -1,7 +1,7 @@
 import os
 from datetime import datetime, timezone
 
-from flask import Flask, Response, abort, request, send_from_directory
+from flask import Flask, Response, abort, redirect, request, send_from_directory
 
 app = Flask(__name__)
 BASE = os.path.dirname(os.path.abspath(__file__))
@@ -88,37 +88,44 @@ def llms_txt():
 
 @app.route('/sitemap.xml')
 def sitemap():
-    """The site is one page, so the sitemap is one URL - and that is correct.
+    """Every public page on the site, per host (each verified property advertises its own sitemap).
 
-    Deliberately NOT listed:
-      - the #section anchors. Google resolves a fragment to the page it sits
-        on, so "/#services" is the same URL as "/". Listing them adds nothing
-        and only pads the file.
-      - the job board, which lives on host.pcrecruiter.net. A sitemap may only
-        contain URLs on its own host.
-      - /llms.txt and /robots.txt, which are not pages for search results.
-
-    If this site is ever split into real pages (services, practice areas,
-    about), list them here - that is the change that would actually give
-    Search Console something to work with.
+    SITEMAP_PAGES_v1 (2026-11): the site now has real inner pages (executive search by city and the
+    marketing, sales and HR recruiting pages), so they are listed here. Pages are found by walking
+    the folder for .html files, so a new page is picked up on the next deploy with no edit here.
+    A folder's index.html is listed as the folder URL (/executive-search/). Not listed: #anchors,
+    the off-site job board, llms.txt and robots.txt.
     """
-    # index.html's mtime is the deploy time on Render, which is a fair answer
-    # to "when did this page last change". Full W3C datetime rather than a
-    # bare date so there is no ambiguity about the timezone.
-    lastmod = datetime.fromtimestamp(os.path.getmtime(os.path.join(BASE, 'index.html')),
-                                     tz=timezone.utc).strftime('%Y-%m-%dT%H:%M:%S+00:00')
+    def lastmod(path):
+        return datetime.fromtimestamp(os.path.getmtime(path), tz=timezone.utc).strftime('%Y-%m-%dT%H:%M:%S+00:00')
+
+    urls = [(f"{_site_url()}/", lastmod(os.path.join(BASE, 'index.html')), 'weekly', '1.0')]
+    for root, dirs, files in os.walk(BASE):
+        dirs[:] = sorted(d for d in dirs if not d.startswith('.') and d not in ('__pycache__', 'venv', '.venv'))
+        for name in sorted(files):
+            if not name.endswith('.html'):
+                continue
+            full = os.path.join(root, name)
+            rel = os.path.relpath(full, BASE).replace(os.sep, '/')
+            if rel == 'index.html':
+                continue
+            loc = rel[:-len('index.html')] if name == 'index.html' else rel
+            urls.append((f"{_site_url()}/{loc}", lastmod(full), 'monthly', '0.8'))
+    body = ''.join(f'  <url><loc>{u}</loc><lastmod>{m}</lastmod><changefreq>{c}</changefreq><priority>{p}</priority></url>\n'
+                   for u, m, c, p in urls)
     xml = ('<?xml version="1.0" encoding="UTF-8"?>\n'
-           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-           f'  <url><loc>{_site_url()}/</loc><lastmod>{lastmod}</lastmod>'
-           # the page now carries two live candidate feeds, so it genuinely
-           # changes more often than the old "monthly" claimed.
-           '<changefreq>weekly</changefreq><priority>1.0</priority></url>\n'
-           '</urlset>\n')
+           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + body + '</urlset>\n')
     return Response(xml, mimetype="application/xml")
 
 
 @app.route('/<path:filename>')
 def static_files(filename):
+    # FOLDER_INDEX_v1: /executive-search/ serves executive-search/index.html,
+    # and /executive-search (no slash) redirects to it.
+    if filename.endswith('/'):
+        filename += 'index.html'
+    elif os.path.isfile(os.path.join(BASE, filename, 'index.html')):
+        return redirect('/' + filename + '/', code=301)
     parts = filename.replace('\\', '/').split('/')
     if any(p.startswith('.') for p in parts):
         abort(404)
