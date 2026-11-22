@@ -82,6 +82,13 @@ def index():
     return _serve_text('index.html', "text/html")
 
 
+@app.route('/salary-guide')
+@app.route('/salary-guide/')
+def salary_guide():
+    """On-site salary guide. The file also answers at /salary-guide.html."""
+    return _serve_text('salary-guide.html', "text/html")
+
+
 # Search engines and AI assistants are all welcome (listed by name so it's explicit).
 _AI_CRAWLERS = ("Googlebot", "Bingbot", "GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot",
                 "Claude-SearchBot", "Claude-User", "anthropic-ai", "PerplexityBot", "Perplexity-User",
@@ -127,7 +134,10 @@ def sitemap():
             rel = os.path.relpath(full, BASE).replace(os.sep, '/')
             if rel == 'index.html':
                 continue
-            loc = rel[:-len('index.html')] if name == 'index.html' else rel
+            if rel == 'salary-guide.html':
+                loc = 'salary-guide'
+            else:
+                loc = rel[:-len('index.html')] if name == 'index.html' else rel
             urls.append((f"{_site_url()}/{loc}", lastmod(full), 'monthly', '0.8'))
     body = ''.join(f'  <url><loc>{u}</loc><lastmod>{m}</lastmod><changefreq>{c}</changefreq><priority>{p}</priority></url>\n'
                    for u, m, c, p in urls)
