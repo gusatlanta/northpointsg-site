@@ -1,4 +1,5 @@
 import os
+import re
 from datetime import datetime, timezone
 
 from flask import Flask, Response, abort, redirect, request, send_from_directory
@@ -34,6 +35,23 @@ _SITE_HOSTS = {
 # Only these kinds of files are served - never the site's own code or the git folder.
 _PUBLIC_EXT = {".html", ".jpg", ".jpeg", ".png", ".webp", ".gif", ".svg", ".ico",
                ".css", ".js", ".pdf", ".woff", ".woff2", ".mp4"}
+
+# GA4_TAG_v1: one measurement id, injected into the <head> of every HTML
+# response. Pages are static files with no shared template, so this is what
+# makes a new page pick the tag up on its own.
+GA_MEASUREMENT_ID = "G-BFY7LW6EWC"
+_GA_SNIPPET = (
+    "<!-- Google tag (gtag.js) -->\n"
+    f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA_MEASUREMENT_ID}"></script>\n'
+    "<script>\n"
+    "  window.dataLayer = window.dataLayer || [];\n"
+    "  function gtag(){dataLayer.push(arguments);}\n"
+    "  gtag('js', new Date());\n"
+    "\n"
+    f"  gtag('config', '{GA_MEASUREMENT_ID}');\n"
+    "</script>\n"
+)
+_HEAD_OPEN = re.compile(r"<head\b[^>]*>", re.IGNORECASE)
 
 
 def _site_url() -> str:
@@ -129,9 +147,42 @@ def static_files(filename):
     parts = filename.replace('\\', '/').split('/')
     if any(p.startswith('.') for p in parts):
         abort(404)
-    if os.path.splitext(filename)[1].lower() not in _PUBLIC_EXT:
+    ext = os.path.splitext(filename)[1].lower()
+    if ext not in _PUBLIC_EXT:
         abort(404)
+    # HTML is rewritten on the way out (the GA4 tag). A conditional 304
+    # would resend the file on disk and the tag would never arrive.
+    if ext == ".html":
+        return send_from_directory(BASE, filename, conditional=False)
     return send_from_directory(BASE, filename)
+
+
+def _inject_ga4(html: str) -> str:
+    """Insert the standard gtag.js snippet immediately after <head>."""
+    if GA_MEASUREMENT_ID in html:
+        return html
+    match = _HEAD_OPEN.search(html)
+    if not match:
+        return html
+    return html[:match.end()] + "\n" + _GA_SNIPPET + html[match.end():]
+
+
+@app.after_request
+def _add_ga4_tag(response):
+    """Add the GA4 tag to every HTML page. Non-HTML responses are left alone."""
+    if response.status_code != 200 or response.mimetype != "text/html":
+        return response
+    if response.direct_passthrough:
+        response.direct_passthrough = False
+    html = response.get_data(as_text=True)
+    updated = _inject_ga4(html)
+    if updated == html:
+        return response
+    response.set_data(updated)
+    # The file ETag described the bytes on disk. The body now includes
+    # the tag, so replace it.
+    response.add_etag(overwrite=True)
+    return response
 
 
 if __name__ == '__main__':
