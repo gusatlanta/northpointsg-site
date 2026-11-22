@@ -14,6 +14,7 @@ _MAIN_PAGES = (
     "/sales-recruiters.html",
     "/hr-recruiters.html",
     "/executive-search/",
+    "/salary-guide",
 )
 
 

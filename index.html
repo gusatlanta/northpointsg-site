@@ -110,13 +110,14 @@
     /* ── NAV ── */
     nav { position: sticky; top: 0; z-index: 900; background: rgba(255,255,255,.96); -webkit-backdrop-filter: saturate(180%) blur(10px); backdrop-filter: saturate(180%) blur(10px); border-bottom: 1px solid var(--border); transition: box-shadow .3s; }
     nav.scrolled { box-shadow: 0 4px 20px rgba(14,34,64,.08); }
-    .nav-inner { max-width: 1180px; margin: 0 auto; padding: 0 24px; height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .nav-inner { max-width: 1360px; margin: 0 auto; padding: 0 16px; height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; gap: 10px; }
     .logo { display: inline-flex; align-items: center; flex-shrink: 0; }
     .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; flex: 1; justify-content: center; }
-    .nav-links a { padding: 8px 11px; border-radius: 8px; font-size: .88rem; font-weight: 500; color: #33415c; transition: color .18s, background .18s; white-space: nowrap; }
+    .nav-links a { padding: 8px 6px; border-radius: 8px; font-size: .8rem; font-weight: 500; color: #33415c; transition: color .18s, background .18s; white-space: nowrap; }
     .nav-links a:hover { color: var(--blue); background: var(--off-white); }
     .nav-ctas { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
     .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 18px; border-radius: 8px; font-size: .86rem; font-weight: 600; font-family: var(--font-body); cursor: pointer; transition: background .2s, color .2s, border-color .2s, transform .15s, box-shadow .2s, filter .2s; border: 1.5px solid transparent; white-space: nowrap; }
+    .nav-ctas .btn { padding: 10px 12px; font-size: .8rem; }
     .btn-outline { background: transparent; color: var(--blue); border-color: var(--border-st); }
     .btn-outline:hover { border-color: var(--blue); background: var(--off-white); }
     .btn-primary { background: var(--grad-brand); color: #fff; border: none; box-shadow: 0 2px 10px rgba(26,118,167,.26); }
@@ -389,11 +390,11 @@
        The number is in the mobile menu, the contact block and the footer. */
     .nav-links a { white-space: nowrap; }
     @media (max-width: 1420px) {
-      .nav-inner { gap: 18px; }
+      .nav-inner { gap: 8px; }
       .nav-links { gap: 0; }
-      .nav-links a { padding: 8px 7px; font-size: .84rem; }
+      .nav-links a { padding: 8px 5px; font-size: .78rem; }
       .nav-ctas { gap: 8px; }
-      .nav-ctas .btn { padding: 10px 13px; font-size: .82rem; }
+      .nav-ctas .btn { padding: 10px 10px; font-size: .78rem; }
     }
     @media (max-width: 1010px) {
       .nav-ctas .btn-outline { display: none; }
@@ -622,6 +623,7 @@
       <li><a href="#divisions">Specialties</a></li>
       <li><a href="#process">How We Work</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="/salary-guide">Salary Guides</a></li>
       <li><a href="https://host.pcrecruiter.net/pcrbin/jobboard.aspx?uid=Staff%20Financial.npsg" target="_blank" rel="noopener">Find a Job</a></li>
     </ul>
     <div class="nav-ctas">
@@ -643,6 +645,7 @@
   <a href="#divisions">Specialties</a>
   <a href="#process">How We Work</a>
   <a href="#contact">Contact</a>
+  <a href="/salary-guide">Salary Guides</a>
   <a href="https://host.pcrecruiter.net/pcrbin/jobboard.aspx?uid=Staff%20Financial.npsg" target="_blank" rel="noopener">Find a Job</a>
   <a href="tel:6787775627">678.777.5627</a>
   <a href="tel:4042500790">404.250.0790</a>
@@ -683,13 +686,13 @@
         <div class="ngc-pick">
           <span class="ngc-pick-label">Get your guide</span>
           <div class="ngc-chips">
-            <a href="https://100xworkforce.com/salary-guide" target="_blank" rel="noopener">Accounting &amp; Finance</a>
-            <a href="https://100xworkforce.com/salary-guide/legal" target="_blank" rel="noopener">Legal</a>
-            <a href="https://100xworkforce.com/salary-guide/marketing" target="_blank" rel="noopener">Marketing</a>
-            <a href="https://100xworkforce.com/salary-guide/hr-recruiting" target="_blank" rel="noopener">HR &amp; Recruiting</a>
-            <a href="https://100xworkforce.com/salary-guide/operations-admin" target="_blank" rel="noopener">Operations &amp; Admin</a>
-            <a href="https://100xworkforce.com/salary-guide/engineering" target="_blank" rel="noopener">Engineering</a>
-            <a href="https://100xworkforce.com/salary-guide/it" target="_blank" rel="noopener">IT</a>
+            <a href="/salary-guide#accounting-finance">Accounting &amp; Finance</a>
+            <a href="/salary-guide#legal">Legal</a>
+            <a href="/salary-guide#marketing">Marketing</a>
+            <a href="/salary-guide#hr-recruiting">HR &amp; Recruiting</a>
+            <a href="/salary-guide#operations-admin">Operations &amp; Admin</a>
+            <a href="/salary-guide#engineering">Engineering</a>
+            <a href="/salary-guide#it">IT</a>
           </div>
         </div>
       </aside>
@@ -1302,6 +1305,7 @@
       <div class="footer-col">
         <h4>Company</h4>
         <ul>
+          <li><a href="/salary-guide">Salary Guides</a></li>
           <li><a href="#brands">Our Brands</a></li>
           <li><a href="#about">About Us</a></li>
           <li><a href="#process">How We Work</a></li>
