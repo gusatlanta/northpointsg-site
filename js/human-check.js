@@ -36,11 +36,19 @@
   }
   function render(c) {
     if (c.id != null || !window.turnstile) return;
+    // The normal box is 300px wide; on a narrower form (small phones) use the compact one.
+    var narrow = c.box.clientWidth > 0 && c.box.clientWidth < 300;
     try {
       c.id = window.turnstile.render(c.box, {
-        sitekey: SITE_KEY, theme: 'light', 'response-field': false,
+        sitekey: SITE_KEY, theme: 'light', size: narrow ? 'compact' : 'normal', 'response-field': false,
         callback: function () { c.failed = null; c.msg.hidden = true; },
-        'error-callback': function (code) { c.failed = code || 'error'; }
+        'error-callback': function (code) {
+          c.failed = code || 'error';
+          // 1101xx / 1102xx: this domain isn't on the key (e.g. www.stafffinancialgroup.com,
+          // which serves the Staff Financial site) or the key is wrong. That's our setup, not
+          // the visitor: hide the box and let the form send as it did before; 100X decides.
+          if (/^110[12]/.test(String(code))) { c.box.style.display = 'none'; c.msg.hidden = true; }
+        }
       });
     } catch (e) { c.failed = 'render'; }
   }
