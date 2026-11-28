@@ -1190,7 +1190,7 @@
       <div class="contact-form">
         <h3>Get Started</h3>
         <p class="form-sub">Fill this out and we'll be in touch within 24 hours.</p>
-        <form id="contactForm" novalidate>
+        <form id="contactForm" novalidate data-human-check>
           <div class="form-row">
             <div class="form-group">
               <label for="firstName">First Name *</label>
@@ -1322,6 +1322,7 @@
   </div>
 </footer>
 
+<script src="/js/human-check.js"></script>
 <script>
   /* Mobile menu */
   const hamburger = document.getElementById('hamburger');
@@ -1372,6 +1373,8 @@
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) {
       msg.className = 'err'; msg.textContent = 'Please enter a valid email address.'; return;
     }
+    /* HUMAN_CHECK_v1: the "Verify you are human" box (js/human-check.js) */
+    if (window.HumanCheck && HumanCheck.blocked(this)) { msg.className = ''; msg.textContent = ''; return; }
 
     const btn = document.getElementById('submitBtn');
     btn.disabled = true; btn.textContent = 'Sending…';
@@ -1389,7 +1392,9 @@
       notes:        document.getElementById('message').value.trim(),
       message:      document.getElementById('message').value.trim(),
       candidate_id: this.getAttribute('data-cand') || '',   /* BENCH_CARD_ASK_v1 */
-      source:       'northpointsg.com'
+      source:       'northpointsg.com',
+      cf_turnstile_response: window.HumanCheck ? HumanCheck.token(this) : '',   /* HUMAN_CHECK_v1 */
+      hp_website:   (this.querySelector('input[name="hp_website"]') || {}).value || ''
     };
 
     try {
@@ -1398,6 +1403,7 @@
       });
       let data;
       try { data = await res.json(); } catch(_) { data = {}; }
+      if (window.HumanCheck && HumanCheck.refused(this, data)) return;   /* button comes back in finally */
       if (res.ok && data.ok) {
         msg.className = 'ok'; msg.textContent = '✓ Request sent! We\'ll be in touch within 24 hours.';
         e.target.reset();
